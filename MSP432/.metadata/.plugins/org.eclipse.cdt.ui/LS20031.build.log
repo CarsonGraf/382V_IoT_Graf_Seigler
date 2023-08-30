@@ -1,0 +1,133 @@
+
+**** Build of configuration Debug for project LS20031 ****
+
+"C:\\ti\\ccs1120\\ccs\\utils\\bin\\gmake" -k -j 16 all -O 
+ 
+Building file: "C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/CortexM.c"
+Invoking: Arm Compiler
+"C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="C:/ti/ccs1120/ccs/ccs_base/arm/include" --include_path="C:/ti/ccs1120/ccs/ccs_base/arm/include/CMSIS" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/LS20031" --include_path="C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --advice:power=all --define=__MSP432P401R__ --define=ccs -g --c99 --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="CortexM.d_raw"  "C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/CortexM.c"
+Finished building: "C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/CortexM.c"
+ 
+Building file: "C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/Clock.c"
+Invoking: Arm Compiler
+"C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="C:/ti/ccs1120/ccs/ccs_base/arm/include" --include_path="C:/ti/ccs1120/ccs/ccs_base/arm/include/CMSIS" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/LS20031" --include_path="C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --advice:power=all --define=__MSP432P401R__ --define=ccs -g --c99 --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="Clock.d_raw"  "C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/Clock.c"
+Finished building: "C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/Clock.c"
+ 
+Building file: "../startup_msp432p401r_ccs.c"
+Invoking: Arm Compiler
+"C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="C:/ti/ccs1120/ccs/ccs_base/arm/include" --include_path="C:/ti/ccs1120/ccs/ccs_base/arm/include/CMSIS" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/LS20031" --include_path="C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --advice:power=all --define=__MSP432P401R__ --define=ccs -g --c99 --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="startup_msp432p401r_ccs.d_raw"  "../startup_msp432p401r_ccs.c"
+Finished building: "../startup_msp432p401r_ccs.c"
+ 
+Building file: "C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/SysTickInts.c"
+Invoking: Arm Compiler
+"C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="C:/ti/ccs1120/ccs/ccs_base/arm/include" --include_path="C:/ti/ccs1120/ccs/ccs_base/arm/include/CMSIS" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/LS20031" --include_path="C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --advice:power=all --define=__MSP432P401R__ --define=ccs -g --c99 --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="SysTickInts.d_raw"  "C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/SysTickInts.c"
+Finished building: "C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/SysTickInts.c"
+ 
+Building file: "C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/LaunchPad.c"
+Invoking: Arm Compiler
+"C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="C:/ti/ccs1120/ccs/ccs_base/arm/include" --include_path="C:/ti/ccs1120/ccs/ccs_base/arm/include/CMSIS" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/LS20031" --include_path="C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --advice:power=all --define=__MSP432P401R__ --define=ccs -g --c99 --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="LaunchPad.d_raw"  "C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/LaunchPad.c"
+Finished building: "C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/LaunchPad.c"
+ 
+Building file: "../LS20031main.c"
+Invoking: Arm Compiler
+"C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="C:/ti/ccs1120/ccs/ccs_base/arm/include" --include_path="C:/ti/ccs1120/ccs/ccs_base/arm/include/CMSIS" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/LS20031" --include_path="C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --advice:power=all --define=__MSP432P401R__ --define=ccs -g --c99 --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="LS20031main.d_raw"  "../LS20031main.c"
+"../LS20031main.c", line 87: remark #1532-D: (ULP 5.3) Detected printf() operation(s). Recommend moving them to RAM during run time or not using as these are processing/power intensive
+Finished building: "../LS20031main.c"
+ 
+Building file: "C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/UART1.c"
+Invoking: Arm Compiler
+"C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="C:/ti/ccs1120/ccs/ccs_base/arm/include" --include_path="C:/ti/ccs1120/ccs/ccs_base/arm/include/CMSIS" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/LS20031" --include_path="C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --advice:power=all --define=__MSP432P401R__ --define=ccs -g --c99 --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="UART1.d_raw"  "C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/UART1.c"
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/UART1.c", line 166: remark #2624-D: (ULP 5.4) Detected an assignment to a type with size less than int. To avoid unnecessary sign extension, use int-sized types for local varaibles and convert to smaller types for static storage.
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/UART1.c", line 177: remark #1527-D: (ULP 2.1) Detected SW delay loop using empty loop. Recommend using a timer module instead
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/UART1.c", line 177: remark #2624-D: (ULP 5.4) Detected an assignment to a type with size less than int. To avoid unnecessary sign extension, use int-sized types for local varaibles and convert to smaller types for static storage.
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/UART1.c", line 188: remark #1527-D: (ULP 2.1) Detected SW delay loop using empty loop. Recommend using a timer module instead
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/UART1.c", line 219: remark #1527-D: (ULP 2.1) Detected SW delay loop using empty loop. Recommend using a timer module instead
+Finished building: "C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/UART1.c"
+ 
+Building file: "../system_msp432p401r.c"
+Invoking: Arm Compiler
+"C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="C:/ti/ccs1120/ccs/ccs_base/arm/include" --include_path="C:/ti/ccs1120/ccs/ccs_base/arm/include/CMSIS" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/LS20031" --include_path="C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --advice:power=all --define=__MSP432P401R__ --define=ccs -g --c99 --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="system_msp432p401r.d_raw"  "../system_msp432p401r.c"
+"../system_msp432p401r.c", line 156: remark #2624-D: (ULP 5.4) Detected an assignment to a type with size less than int. To avoid unnecessary sign extension, use int-sized types for local varaibles and convert to smaller types for static storage.
+"../system_msp432p401r.c", line 189: remark #2624-D: (ULP 5.4) Detected an assignment to a type with size less than int. To avoid unnecessary sign extension, use int-sized types for local varaibles and convert to smaller types for static storage.
+Finished building: "../system_msp432p401r.c"
+ 
+Building file: "C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/UART0.c"
+Invoking: Arm Compiler
+"C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="C:/ti/ccs1120/ccs/ccs_base/arm/include" --include_path="C:/ti/ccs1120/ccs/ccs_base/arm/include/CMSIS" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/LS20031" --include_path="C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --advice:power=all --define=__MSP432P401R__ --define=ccs -g --c99 --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="UART0.d_raw"  "C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/UART0.c"
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/UART0.c", line 89: remark #1527-D: (ULP 2.1) Detected SW delay loop using empty loop. Recommend using a timer module instead
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/UART0.c", line 100: remark #1527-D: (ULP 2.1) Detected SW delay loop using empty loop. Recommend using a timer module instead
+Finished building: "C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/UART0.c"
+ 
+Building file: "C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c"
+Invoking: Arm Compiler
+"C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="C:/ti/ccs1120/ccs/ccs_base/arm/include" --include_path="C:/ti/ccs1120/ccs/ccs_base/arm/include/CMSIS" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/LS20031" --include_path="C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --advice:power=all --define=__MSP432P401R__ --define=ccs -g --c99 --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="BSP.d_raw"  "C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c"
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 237: remark #1527-D: (ULP 2.1) Detected SW delay loop using empty loop. Recommend using a timer module instead
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 319: remark #1527-D: (ULP 2.1) Detected SW delay loop using empty loop. Recommend using a timer module instead
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 323: remark #1527-D: (ULP 2.1) Detected SW delay loop using empty loop. Recommend using a timer module instead
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 325: remark #1527-D: (ULP 2.1) Detected SW delay loop using empty loop. Recommend using a timer module instead
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 651: remark #1527-D: (ULP 2.1) Detected SW delay loop using empty loop. Recommend using a timer module instead
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 655: remark #1527-D: (ULP 2.1) Detected SW delay loop using empty loop. Recommend using a timer module instead
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 657: remark #1527-D: (ULP 2.1) Detected SW delay loop using empty loop. Recommend using a timer module instead
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 694: remark #1527-D: (ULP 2.1) Detected SW delay loop using empty loop. Recommend using a timer module instead
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 698: remark #1527-D: (ULP 2.1) Detected SW delay loop using empty loop. Recommend using a timer module instead
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 700: remark #1527-D: (ULP 2.1) Detected SW delay loop using empty loop. Recommend using a timer module instead
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 1090: remark #1528-D: (ULP 3.1) Detected flag polling using UCB0IFG. Recommend using an interrupt combined with enter LPMx and ISR
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 1094: remark #1528-D: (ULP 3.1) Detected flag polling using UCB0IFG. Recommend using an interrupt combined with enter LPMx and ISR
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 1105: remark #1528-D: (ULP 3.1) Detected flag polling using UCB0IFG. Recommend using an interrupt combined with enter LPMx and ISR
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 1109: remark #1528-D: (ULP 3.1) Detected flag polling using UCB0IFG. Recommend using an interrupt combined with enter LPMx and ISR
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 1285: remark #2624-D: (ULP 5.4) Detected an assignment to a type with size less than int. To avoid unnecessary sign extension, use int-sized types for local varaibles and convert to smaller types for static storage.
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 1288: remark #2624-D: (ULP 5.4) Detected an assignment to a type with size less than int. To avoid unnecessary sign extension, use int-sized types for local varaibles and convert to smaller types for static storage.
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 1289: remark #2624-D: (ULP 5.4) Detected an assignment to a type with size less than int. To avoid unnecessary sign extension, use int-sized types for local varaibles and convert to smaller types for static storage.
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 1290: remark #2624-D: (ULP 5.4) Detected an assignment to a type with size less than int. To avoid unnecessary sign extension, use int-sized types for local varaibles and convert to smaller types for static storage.
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 1295: remark #2624-D: (ULP 5.4) Detected an assignment to a type with size less than int. To avoid unnecessary sign extension, use int-sized types for local varaibles and convert to smaller types for static storage.
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 1471: remark #2624-D: (ULP 5.4) Detected an assignment to a type with size less than int. To avoid unnecessary sign extension, use int-sized types for local varaibles and convert to smaller types for static storage.
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 1474: remark #2624-D: (ULP 5.4) Detected an assignment to a type with size less than int. To avoid unnecessary sign extension, use int-sized types for local varaibles and convert to smaller types for static storage.
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 1495: remark #2624-D: (ULP 5.4) Detected an assignment to a type with size less than int. To avoid unnecessary sign extension, use int-sized types for local varaibles and convert to smaller types for static storage.
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 1498: remark #2624-D: (ULP 5.4) Detected an assignment to a type with size less than int. To avoid unnecessary sign extension, use int-sized types for local varaibles and convert to smaller types for static storage.
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 1530: remark #2624-D: (ULP 5.4) Detected an assignment to a type with size less than int. To avoid unnecessary sign extension, use int-sized types for local varaibles and convert to smaller types for static storage.
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 1531: remark #2624-D: (ULP 5.4) Detected an assignment to a type with size less than int. To avoid unnecessary sign extension, use int-sized types for local varaibles and convert to smaller types for static storage.
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 1536: remark #2624-D: (ULP 5.4) Detected an assignment to a type with size less than int. To avoid unnecessary sign extension, use int-sized types for local varaibles and convert to smaller types for static storage.
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 1535: remark #2624-D: (ULP 5.4) Detected an assignment to a type with size less than int. To avoid unnecessary sign extension, use int-sized types for local varaibles and convert to smaller types for static storage.
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 1600: remark #2624-D: (ULP 5.4) Detected an assignment to a type with size less than int. To avoid unnecessary sign extension, use int-sized types for local varaibles and convert to smaller types for static storage.
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 1601: remark #2624-D: (ULP 5.4) Detected an assignment to a type with size less than int. To avoid unnecessary sign extension, use int-sized types for local varaibles and convert to smaller types for static storage.
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 1605: remark #2624-D: (ULP 5.4) Detected an assignment to a type with size less than int. To avoid unnecessary sign extension, use int-sized types for local varaibles and convert to smaller types for static storage.
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 1608: remark #2624-D: (ULP 5.4) Detected an assignment to a type with size less than int. To avoid unnecessary sign extension, use int-sized types for local varaibles and convert to smaller types for static storage.
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 1609: remark #2624-D: (ULP 5.4) Detected an assignment to a type with size less than int. To avoid unnecessary sign extension, use int-sized types for local varaibles and convert to smaller types for static storage.
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 1614: remark #2624-D: (ULP 5.4) Detected an assignment to a type with size less than int. To avoid unnecessary sign extension, use int-sized types for local varaibles and convert to smaller types for static storage.
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 1615: remark #2624-D: (ULP 5.4) Detected an assignment to a type with size less than int. To avoid unnecessary sign extension, use int-sized types for local varaibles and convert to smaller types for static storage.
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 1621: remark #2624-D: (ULP 5.4) Detected an assignment to a type with size less than int. To avoid unnecessary sign extension, use int-sized types for local varaibles and convert to smaller types for static storage.
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 1620: remark #2624-D: (ULP 5.4) Detected an assignment to a type with size less than int. To avoid unnecessary sign extension, use int-sized types for local varaibles and convert to smaller types for static storage.
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 1677: remark #2624-D: (ULP 5.4) Detected an assignment to a type with size less than int. To avoid unnecessary sign extension, use int-sized types for local varaibles and convert to smaller types for static storage.
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 1731: remark #2624-D: (ULP 5.4) Detected an assignment to a type with size less than int. To avoid unnecessary sign extension, use int-sized types for local varaibles and convert to smaller types for static storage.
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 1752: remark #2624-D: (ULP 5.4) Detected an assignment to a type with size less than int. To avoid unnecessary sign extension, use int-sized types for local varaibles and convert to smaller types for static storage.
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 1842: remark #2624-D: (ULP 5.4) Detected an assignment to a type with size less than int. To avoid unnecessary sign extension, use int-sized types for local varaibles and convert to smaller types for static storage.
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 1844: remark #2624-D: (ULP 5.4) Detected an assignment to a type with size less than int. To avoid unnecessary sign extension, use int-sized types for local varaibles and convert to smaller types for static storage.
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 1846: remark #2624-D: (ULP 5.4) Detected an assignment to a type with size less than int. To avoid unnecessary sign extension, use int-sized types for local varaibles and convert to smaller types for static storage.
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 1849: remark #2624-D: (ULP 5.4) Detected an assignment to a type with size less than int. To avoid unnecessary sign extension, use int-sized types for local varaibles and convert to smaller types for static storage.
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 1851: remark #2624-D: (ULP 5.4) Detected an assignment to a type with size less than int. To avoid unnecessary sign extension, use int-sized types for local varaibles and convert to smaller types for static storage.
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 1853: remark #2624-D: (ULP 5.4) Detected an assignment to a type with size less than int. To avoid unnecessary sign extension, use int-sized types for local varaibles and convert to smaller types for static storage.
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 2417: remark #1527-D: (ULP 2.1) Detected SW delay loop using empty loop. Recommend using a timer module instead
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 2431: remark #2624-D: (ULP 5.4) Detected an assignment to a type with size less than int. To avoid unnecessary sign extension, use int-sized types for local varaibles and convert to smaller types for static storage.
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 2438: remark #2624-D: (ULP 5.4) Detected an assignment to a type with size less than int. To avoid unnecessary sign extension, use int-sized types for local varaibles and convert to smaller types for static storage.
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 2451: remark #1527-D: (ULP 2.1) Detected SW delay loop using empty loop. Recommend using a timer module instead
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 2459: remark #1527-D: (ULP 2.1) Detected SW delay loop using empty loop. Recommend using a timer module instead
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 2517: remark #1527-D: (ULP 2.1) Detected SW delay loop using empty loop. Recommend using a timer module instead
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 2525: remark #1527-D: (ULP 2.1) Detected SW delay loop using empty loop. Recommend using a timer module instead
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 2621: remark #1527-D: (ULP 2.1) Detected SW delay loop using empty loop. Recommend using a timer module instead
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c", line 2733: remark #1527-D: (ULP 2.1) Detected SW delay loop using empty loop. Recommend using a timer module instead
+Finished building: "C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/BSP.c"
+ 
+Building target: "LS20031.out"
+Invoking: Arm Linker
+"C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --advice:power=all --define=__MSP432P401R__ --define=ccs -g --c99 --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi -z -m"LS20031.map" --heap_size=1024 --stack_size=512 -i"C:/ti/ccs1120/ccs/ccs_base/arm/include" -i"C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/lib" -i"C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="LS20031_linkInfo.xml" --rom_model -o "LS20031.out" "./BSP.obj" "./Clock.obj" "./CortexM.obj" "./LS20031main.obj" "./LaunchPad.obj" "./SysTickInts.obj" "./UART0.obj" "./UART1.obj" "./startup_msp432p401r_ccs.obj" "./system_msp432p401r.obj" "../msp432p401r.cmd"  -llibc.a 
+<Linking>
+remark #10371-D: (ULP 1.1) Detected no uses of low power mode state changing instructions
+remark #10372-D: (ULP 4.1) Detected uninitialized Port 6 in this project. Recommend initializing all unused ports to eliminate wasted current consumption on unused pins.
+remark #10372-D: (ULP 4.1) Detected uninitialized Port 7 in this project. Recommend initializing all unused ports to eliminate wasted current consumption on unused pins.
+remark #10372-D: (ULP 4.1) Detected uninitialized Port 8 in this project. Recommend initializing all unused ports to eliminate wasted current consumption on unused pins.
+remark #10372-D: (ULP 4.1) Detected uninitialized Port 9 in this project. Recommend initializing all unused ports to eliminate wasted current consumption on unused pins.
+remark #10372-D: (ULP 4.1) Detected uninitialized Port 10 in this project. Recommend initializing all unused ports to eliminate wasted current consumption on unused pins.
+Finished building target: "LS20031.out"
+ 
+
+**** Build Finished ****

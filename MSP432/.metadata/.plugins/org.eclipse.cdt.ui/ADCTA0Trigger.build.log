@@ -1,0 +1,72 @@
+
+**** Build of configuration Debug for project ADCTA0Trigger ****
+
+"C:\\ti\\ccs1120\\ccs\\utils\\bin\\gmake" -k -j 16 all -O 
+ 
+Building file: "C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/CortexM.c"
+Invoking: Arm Compiler
+"C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="C:/ti/ccs1120/ccs/ccs_base/arm/include" --include_path="C:/ti/ccs1120/ccs/ccs_base/arm/include/CMSIS" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/ADCTA0Trigger" --include_path="C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --advice:power=all --define=__MSP432P401R__ --define=ccs -g --c99 --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="CortexM.d_raw"  "C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/CortexM.c"
+Finished building: "C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/CortexM.c"
+ 
+Building file: "../startup_msp432p401r_ccs.c"
+Invoking: Arm Compiler
+"C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="C:/ti/ccs1120/ccs/ccs_base/arm/include" --include_path="C:/ti/ccs1120/ccs/ccs_base/arm/include/CMSIS" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/ADCTA0Trigger" --include_path="C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --advice:power=all --define=__MSP432P401R__ --define=ccs -g --c99 --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="startup_msp432p401r_ccs.d_raw"  "../startup_msp432p401r_ccs.c"
+Finished building: "../startup_msp432p401r_ccs.c"
+ 
+Building file: "C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/ADCTA0Trigger.c"
+Invoking: Arm Compiler
+"C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="C:/ti/ccs1120/ccs/ccs_base/arm/include" --include_path="C:/ti/ccs1120/ccs/ccs_base/arm/include/CMSIS" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/ADCTA0Trigger" --include_path="C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --advice:power=all --define=__MSP432P401R__ --define=ccs -g --c99 --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="ADCTA0Trigger.d_raw"  "C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/ADCTA0Trigger.c"
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/ADCTA0Trigger.c", line 84: remark #1527-D: (ULP 2.1) Detected SW delay loop using empty loop. Recommend using a timer module instead
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/ADCTA0Trigger.c", line 106: remark #1527-D: (ULP 2.1) Detected SW delay loop using empty loop. Recommend using a timer module instead
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/ADCTA0Trigger.c", line 108: remark #1527-D: (ULP 2.1) Detected SW delay loop using empty loop. Recommend using a timer module instead
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/ADCTA0Trigger.c", line 156: remark #2624-D: (ULP 5.4) Detected an assignment to a type with size less than int. To avoid unnecessary sign extension, use int-sized types for local varaibles and convert to smaller types for static storage.
+Finished building: "C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/ADCTA0Trigger.c"
+ 
+Building file: "C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/Clock.c"
+Invoking: Arm Compiler
+"C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="C:/ti/ccs1120/ccs/ccs_base/arm/include" --include_path="C:/ti/ccs1120/ccs/ccs_base/arm/include/CMSIS" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/ADCTA0Trigger" --include_path="C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --advice:power=all --define=__MSP432P401R__ --define=ccs -g --c99 --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="Clock.d_raw"  "C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/Clock.c"
+Finished building: "C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/Clock.c"
+ 
+Building file: "../ADCTA0Triggermain.c"
+Invoking: Arm Compiler
+"C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="C:/ti/ccs1120/ccs/ccs_base/arm/include" --include_path="C:/ti/ccs1120/ccs/ccs_base/arm/include/CMSIS" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/ADCTA0Trigger" --include_path="C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --advice:power=all --define=__MSP432P401R__ --define=ccs -g --c99 --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="ADCTA0Triggermain.d_raw"  "../ADCTA0Triggermain.c"
+"../ADCTA0Triggermain.c", line 127: remark #1527-D: (ULP 2.1) Detected SW delay loop using empty loop. Recommend using a timer module instead
+"../ADCTA0Triggermain.c", line 132: remark #1543-D: (ULP 12.2) Detected for loop with repetitive data transfer. Recommend using DMA
+"../ADCTA0Triggermain.c", line 133: remark #1527-D: (ULP 2.1) Detected SW delay loop using empty loop. Recommend using a timer module instead
+"../ADCTA0Triggermain.c", line 146: remark #1543-D: (ULP 12.2) Detected for loop with repetitive data transfer. Recommend using DMA
+"../ADCTA0Triggermain.c", line 152: remark #1543-D: (ULP 12.2) Detected for loop with repetitive data transfer. Recommend using DMA
+"../ADCTA0Triggermain.c", line 174: remark #1527-D: (ULP 2.1) Detected SW delay loop using empty loop. Recommend using a timer module instead
+"../ADCTA0Triggermain.c", line 175: remark #1527-D: (ULP 2.1) Detected SW delay loop using empty loop. Recommend using a timer module instead
+Finished building: "../ADCTA0Triggermain.c"
+ 
+Building file: "C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/LaunchPad.c"
+Invoking: Arm Compiler
+"C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="C:/ti/ccs1120/ccs/ccs_base/arm/include" --include_path="C:/ti/ccs1120/ccs/ccs_base/arm/include/CMSIS" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/ADCTA0Trigger" --include_path="C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --advice:power=all --define=__MSP432P401R__ --define=ccs -g --c99 --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="LaunchPad.d_raw"  "C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/LaunchPad.c"
+Finished building: "C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/LaunchPad.c"
+ 
+Building file: "../system_msp432p401r.c"
+Invoking: Arm Compiler
+"C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="C:/ti/ccs1120/ccs/ccs_base/arm/include" --include_path="C:/ti/ccs1120/ccs/ccs_base/arm/include/CMSIS" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/ADCTA0Trigger" --include_path="C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --advice:power=all --define=__MSP432P401R__ --define=ccs -g --c99 --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="system_msp432p401r.d_raw"  "../system_msp432p401r.c"
+"../system_msp432p401r.c", line 156: remark #2624-D: (ULP 5.4) Detected an assignment to a type with size less than int. To avoid unnecessary sign extension, use int-sized types for local varaibles and convert to smaller types for static storage.
+"../system_msp432p401r.c", line 189: remark #2624-D: (ULP 5.4) Detected an assignment to a type with size less than int. To avoid unnecessary sign extension, use int-sized types for local varaibles and convert to smaller types for static storage.
+Finished building: "../system_msp432p401r.c"
+ 
+Building target: "ADCTA0Trigger.out"
+Invoking: Arm Linker
+"C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --advice:power=all --define=__MSP432P401R__ --define=ccs -g --c99 --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi -z -m"ADCTA0Trigger.map" --heap_size=1024 --stack_size=512 -i"C:/ti/ccs1120/ccs/ccs_base/arm/include" -i"C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/lib" -i"C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="ADCTA0Trigger_linkInfo.xml" --rom_model -o "ADCTA0Trigger.out" "./ADCTA0Trigger.obj" "./ADCTA0Triggermain.obj" "./Clock.obj" "./CortexM.obj" "./LaunchPad.obj" "../UART0.obj" "./startup_msp432p401r_ccs.obj" "./system_msp432p401r.obj" "../msp432p401r.cmd"  -llibc.a 
+<Linking>
+remark #10371-D: (ULP 1.1) Detected no uses of low power mode state changing instructions
+remark #10372-D: (ULP 4.1) Detected uninitialized Port 1 in this project. Recommend initializing all unused ports to eliminate wasted current consumption on unused pins.
+remark #10372-D: (ULP 4.1) Detected uninitialized Port 2 in this project. Recommend initializing all unused ports to eliminate wasted current consumption on unused pins.
+remark #10372-D: (ULP 4.1) Detected uninitialized Port 3 in this project. Recommend initializing all unused ports to eliminate wasted current consumption on unused pins.
+remark #10372-D: (ULP 4.1) Detected uninitialized Port 4 in this project. Recommend initializing all unused ports to eliminate wasted current consumption on unused pins.
+remark #10372-D: (ULP 4.1) Detected uninitialized Port 5 in this project. Recommend initializing all unused ports to eliminate wasted current consumption on unused pins.
+remark #10372-D: (ULP 4.1) Detected uninitialized Port 6 in this project. Recommend initializing all unused ports to eliminate wasted current consumption on unused pins.
+remark #10372-D: (ULP 4.1) Detected uninitialized Port 7 in this project. Recommend initializing all unused ports to eliminate wasted current consumption on unused pins.
+remark #10372-D: (ULP 4.1) Detected uninitialized Port 8 in this project. Recommend initializing all unused ports to eliminate wasted current consumption on unused pins.
+remark #10372-D: (ULP 4.1) Detected uninitialized Port 9 in this project. Recommend initializing all unused ports to eliminate wasted current consumption on unused pins.
+remark #10372-D: (ULP 4.1) Detected uninitialized Port 10 in this project. Recommend initializing all unused ports to eliminate wasted current consumption on unused pins.
+Finished building target: "ADCTA0Trigger.out"
+ 
+
+**** Build Finished ****

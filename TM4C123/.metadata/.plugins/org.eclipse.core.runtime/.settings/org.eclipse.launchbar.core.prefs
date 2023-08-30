@@ -1,0 +1,7 @@
+LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/arch=x86_64
+LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/name=Local
+LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/os=win32
+configDescList=org.eclipse.launchbar.core.descriptorType.default\:ADCSWTrigger_4C123,org.eclipse.launchbar.core.descriptorType.default\:CC3100_GetWeather,org.eclipse.launchbar.core.descriptorType.default\:IoT_Lab1_SubGHz,org.eclipse.launchbar.core.descriptorType.default\:IoT_Lab3_wifi,org.eclipse.launchbar.core.descriptorType.default\:PeriodicSysTickInt,org.eclipse.launchbar.core.descriptorType.default\:ST7735,org.eclipse.launchbar.core.descriptorType.default\:Ultrasound
+eclipse.preferences.version=1
+org.eclipse.launchbar.core.descriptorType.default\:ADCSWTrigger_4C123/activeLaunchMode=run
+org.eclipse.launchbar.core.descriptorType.default\:ADCSWTrigger_4C123/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local

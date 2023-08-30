@@ -1,0 +1,635 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.22)  3 OCT 2020 14:26
+entering extended mode
+**./refman.tex
+(refman.tex
+LaTeX2e <2020-02-02> patch level 5
+L3 programming layer <2020-05-15>
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\book.cls"
+Document Class: book 2019/12/20 v1.4l Standard LaTeX document class
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\bk10.clo"
+File: bk10.clo 2019/12/20 v1.4l Standard LaTeX file (size option)
+)
+\c@part=\count167
+\c@chapter=\count168
+\c@section=\count169
+\c@subsection=\count170
+\c@subsubsection=\count171
+\c@paragraph=\count172
+\c@subparagraph=\count173
+\c@figure=\count174
+\c@table=\count175
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen134
+)
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\fixltx2e.st
+y"
+Package: fixltx2e 2016/12/29 v2.1a fixes to LaTeX (obsolete)
+Applying: [2015/01/01] Old fixltx2e package on input line 46.
+
+
+Package fixltx2e Warning: fixltx2e is not required with releases after 2015
+(fixltx2e)                All fixes are now in the LaTeX kernel.
+(fixltx2e)                See the latexrelease package for details.
+
+Already applied: [0000/00/00] Old fixltx2e package on input line 53.
+) ("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tools\calc.sty
+"
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count176
+\calc@Bcount=\count177
+\calc@Adimen=\dimen135
+\calc@Bdimen=\dimen136
+\calc@Askip=\skip49
+\calc@Bskip=\skip50
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count178
+\calc@Cskip=\skip51
+) (doxygen.sty
+Package: doxygen 
+
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\alltt.sty"
+Package: alltt 1997/06/16 v2.0g defines alltt environment
+) ("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tools\array.st
+y"
+Package: array 2019/08/31 v2.4l Tabular extension package (FMi)
+\col@sep=\dimen137
+\ar@mcellbox=\box45
+\extrarowheight=\dimen138
+\NC@list=\toks15
+\extratabsurround=\skip52
+\backup@length=\skip53
+\ar@cellbox=\box46
+)
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/float\float.sty"
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count179
+\float@exts=\toks16
+\float@box=\box47
+\@float@everytoks=\toks17
+\@floatcapt=\box48
+) ("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\ifthen.st
+y"
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tools\verbatim.s
+ty"
+Package: verbatim 2019/11/10 v1.5r LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks18
+\verbatim@line=\toks19
+\verbatim@in@stream=\read2
+)
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/xcolor\xcolor.st
+y"
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics-cfg\col
+or.cfg"
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics-def\pdf
+tex.def"
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+)
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/colortbl\colortb
+l.sty"
+Package: colortbl 2020/01/04 v1.0e Color table columns (DPC)
+\everycr=\toks20
+\minrowclearance=\skip54
+)
+\rownum=\count180
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tools\longtable.
+sty"
+Package: longtable 2020/01/07 v4.13 Multi-page Table package (DPC)
+\LTleft=\skip55
+\LTright=\skip56
+\LTpre=\skip57
+\LTpost=\skip58
+\LTchunksize=\count181
+\LTcapwidth=\dimen139
+\LT@head=\box49
+\LT@firsthead=\box50
+\LT@foot=\box51
+\LT@lastfoot=\box52
+\LT@cols=\count182
+\LT@rows=\count183
+\c@LT@tables=\count184
+\c@LT@chunks=\count185
+\LT@p@ftn=\toks21
+)
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tabu\tabu.sty"
+Package: tabu 2019/01/11 v2.9 - flexible LaTeX tabulars (FC+tabu-fixed)
+
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/varwidth\varwidt
+h.sty"
+Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
+\@vwid@box=\box53
+\sift@deathcycles=\count186
+\@vwid@loff=\dimen140
+\@vwid@roff=\dimen141
+)
+\c@taburow=\count187
+\tabu@nbcols=\count188
+\tabu@cnt=\count189
+\tabu@Xcol=\count190
+\tabu@alloc=\count191
+\tabu@nested=\count192
+\tabu@target=\dimen142
+\tabu@spreadtarget=\dimen143
+\tabu@naturalX=\dimen144
+\tabucolX=\dimen145
+\tabu@Xsum=\dimen146
+\extrarowdepth=\dimen147
+\abovetabulinesep=\dimen148
+\belowtabulinesep=\dimen149
+\tabustrutrule=\dimen150
+\tabu@thebody=\toks22
+\tabu@footnotes=\toks23
+\tabu@box=\box54
+\tabu@arstrutbox=\box55
+\tabu@hleads=\box56
+\tabu@vleads=\box57
+\tabu@cellskip=\skip59
+)
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tools\tabularx.s
+ty"
+Package: tabularx 2020/01/15 v2.11c `tabularx' package (DPC)
+\TX@col@width=\dimen151
+\TX@old@table=\dimen152
+\TX@old@col=\dimen153
+\TX@target=\dimen154
+\TX@delta=\dimen155
+\TX@cols=\count193
+\TX@ftn=\toks24
+)
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/multirow\multiro
+w.sty"
+Package: multirow 2019/05/31 v2.5 Span multiple rows of a table
+\multirow@colwidth=\skip60
+\multirow@cntb=\count194
+\multirow@dima=\skip61
+\bigstrutjot=\dimen156
+)
+\xrefbox=\box58
+\xreflength=\skip62
+)
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/adjustbox\adjust
+box.sty"
+Package: adjustbox 2019/01/04 v1.2 Adjusting TeX boxes (trim, clip, ...)
+
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/xkeyval\xkeyval.
+sty"
+Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
+
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/generic/xkeyval\xkeyva
+l.tex"
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/generic/xkeyval\xkvuti
+ls.tex"
+\XKV@toks=\toks25
+\XKV@tempa@toks=\toks26
+
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/generic/xkeyval\keyval
+.tex"))
+\XKV@depth=\count195
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+))
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/adjustbox\adjcal
+c.sty"
+Package: adjcalc 2012/05/16 v1.1 Provides advanced setlength with multiple back
+-ends (calc, etex, pgfmath)
+)
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/adjustbox\trimcl
+ip.sty"
+Package: trimclip 2018/04/08 v1.1 Trim and clip general TeX material
+
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\graphic
+x.sty"
+Package: graphicx 2019/11/30 v1.2a Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\graphic
+s.sty"
+Package: graphics 2019/11/30 v1.4a Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\trig.st
+y"
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics-cfg\gra
+phics.cfg"
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 105.
+)
+\Gin@req@height=\dimen157
+\Gin@req@width=\dimen158
+)
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/collectbox\colle
+ctbox.sty"
+Package: collectbox 2012/05/17 v0.4b Collect macro arguments as boxes
+\collectedbox=\box59
+)
+\tc@llx=\dimen159
+\tc@lly=\dimen160
+\tc@urx=\dimen161
+\tc@ury=\dimen162
+Package trimclip Info: Using driver 'tc-pdftex.def'.
+
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/adjustbox\tc-pdf
+tex.def"
+File: tc-pdftex.def 2019/01/04 v2.2 Clipping driver for pdftex
+))
+\adjbox@Width=\dimen163
+\adjbox@Height=\dimen164
+\adjbox@Depth=\dimen165
+\adjbox@Totalheight=\dimen166
+\adjbox@pwidth=\dimen167
+\adjbox@pheight=\dimen168
+\adjbox@pdepth=\dimen169
+\adjbox@ptotalheight=\dimen170
+
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/ifoddpage\ifoddp
+age.sty"
+Package: ifoddpage 2016/04/23 v1.1 Conditionals for odd/even page detection
+\c@checkoddpage=\count196
+))
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\inputenc.st
+y"
+Package: inputenc 2018/08/11 v1.3c Input encoding file
+\inpenc@prehook=\toks27
+\inpenc@posthook=\toks28
+)
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\makeidx.sty
+"
+Package: makeidx 2014/09/29 v1.0m Standard LaTeX package
+)
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tools\multicol.s
+ty"
+Package: multicol 2019/12/09 v1.8y multicolumn formatting (FMi)
+\c@tracingmulticols=\count197
+\mult@box=\box60
+\multicol@leftmargin=\dimen171
+\c@unbalance=\count198
+\c@collectmore=\count199
+\doublecol@number=\count266
+\multicoltolerance=\count267
+\multicolpretolerance=\count268
+\full@width=\dimen172
+\page@free=\dimen173
+\premulticols=\dimen174
+\postmulticols=\dimen175
+\multicolsep=\skip63
+\multicolbaselineskip=\skip64
+\partial@page=\box61
+\last@line=\box62
+\maxbalancingoverflow=\dimen176
+\mult@rightbox=\box63
+\mult@grightbox=\box64
+\mult@gfirstbox=\box65
+\mult@firstbox=\box66
+\@tempa=\box67
+\@tempa=\box68
+\@tempa=\box69
+\@tempa=\box70
+\@tempa=\box71
+\@tempa=\box72
+\@tempa=\box73
+\@tempa=\box74
+\@tempa=\box75
+\@tempa=\box76
+\@tempa=\box77
+\@tempa=\box78
+\@tempa=\box79
+\@tempa=\box80
+\@tempa=\box81
+\@tempa=\box82
+\@tempa=\box83
+\@tempa=\box84
+\@tempa=\box85
+\@tempa=\box86
+\@tempa=\box87
+\@tempa=\box88
+\@tempa=\box89
+\@tempa=\box90
+\@tempa=\box91
+\@tempa=\box92
+\@tempa=\box93
+\@tempa=\box94
+\@tempa=\box95
+\@tempa=\box96
+\@tempa=\box97
+\@tempa=\box98
+\@tempa=\box99
+\@tempa=\box100
+\@tempa=\box101
+\@tempa=\box102
+\@tempa=\box103
+\c@minrows=\count269
+\c@columnbadness=\count270
+\c@finalcolumnbadness=\count271
+\last@try=\dimen177
+\multicolovershoot=\dimen178
+\multicolundershoot=\dimen179
+\mult@nat@firstbox=\box104
+\colbreak@box=\box105
+\mc@col@check@num=\count272
+)
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\textcomp.st
+y"
+Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
+)
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/wasysym\wasysym.
+sty"
+Package: wasysym 2020/01/19 v2.4 Wasy-2 symbol support package
+\symwasy=\mathgroup4
+LaTeX Font Info:    Overwriting symbol font `wasy' in version `bold'
+(Font)                  U/wasy/m/n --> U/wasy/b/n on input line 93.
+)
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\fontenc.sty
+"
+Package: fontenc 2020/02/11 v2.0o Standard LaTeX package
+)
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/psnfss\helvet.st
+y"
+Package: helvet 2020/03/25 PSNFSS-v9.3 (WaS) 
+)
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/psnfss\courier.s
+ty"
+Package: courier 2020/03/25 PSNFSS-v9.3 (WaS) 
+)
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\amssymb
+.sty"
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\amsfont
+s.sty"
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks29
+\symAMSa=\mathgroup5
+\symAMSb=\mathgroup6
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/sectsty\sectsty.
+sty"
+Package: sectsty 2002/02/25 v2.0.2 Commands to change all sectional heading sty
+les
+
+
+LaTeX Warning: Command \underbar  has changed.
+               Check if current package is valid.
+
+
+LaTeX Warning: Command \underline  has changed.
+               Check if current package is valid.
+
+)
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/geometry\geometr
+y.sty"
+Package: geometry 2020/01/02 v5.9 Page Geometry
+
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/generic/iftex\ifvtex.s
+ty"
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/generic/iftex\iftex.st
+y"
+Package: iftex 2020/03/06 v1.0d TeX engine tests
+))
+\Gm@cnth=\count273
+\Gm@cntv=\count274
+\c@Gm@tempcnt=\count275
+\Gm@bindingoffset=\dimen180
+\Gm@wd@mp=\dimen181
+\Gm@odd@mp=\dimen182
+\Gm@even@mp=\dimen183
+\Gm@layoutwidth=\dimen184
+\Gm@layoutheight=\dimen185
+\Gm@layouthoffset=\dimen186
+\Gm@layoutvoffset=\dimen187
+\Gm@dimlist=\toks30
+
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/geometry\geometr
+y.cfg"))
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/fancyhdr\fancyhd
+r.sty"
+Package: fancyhdr 2019/01/31 v3.10 Extensive control of page headers and footer
+s
+\f@nch@headwidth=\skip65
+\f@nch@O@elh=\skip66
+\f@nch@O@erh=\skip67
+\f@nch@O@olh=\skip68
+\f@nch@O@orh=\skip69
+\f@nch@O@elf=\skip70
+\f@nch@O@erf=\skip71
+\f@nch@O@olf=\skip72
+\f@nch@O@orf=\skip73
+)
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/natbib\natbib.st
+y"
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip74
+\bibsep=\skip75
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count276
+)
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tocloft\tocloft.
+sty"
+Package: tocloft 2017/08/31 v2.3i parameterised ToC, etc., typesetting
+Package tocloft Info: The document has chapter divisions on input line 51.
+\cftparskip=\skip76
+\cftbeforetoctitleskip=\skip77
+\cftaftertoctitleskip=\skip78
+\cftbeforepartskip=\skip79
+\cftpartnumwidth=\skip80
+\cftpartindent=\skip81
+\cftbeforechapskip=\skip82
+\cftchapindent=\skip83
+\cftchapnumwidth=\skip84
+\cftbeforesecskip=\skip85
+\cftsecindent=\skip86
+\cftsecnumwidth=\skip87
+\cftbeforesubsecskip=\skip88
+\cftsubsecindent=\skip89
+\cftsubsecnumwidth=\skip90
+\cftbeforesubsubsecskip=\skip91
+\cftsubsubsecindent=\skip92
+\cftsubsubsecnumwidth=\skip93
+\cftbeforeparaskip=\skip94
+\cftparaindent=\skip95
+\cftparanumwidth=\skip96
+\cftbeforesubparaskip=\skip97
+\cftsubparaindent=\skip98
+\cftsubparanumwidth=\skip99
+\cftbeforeloftitleskip=\skip100
+\cftafterloftitleskip=\skip101
+\cftbeforefigskip=\skip102
+\cftfigindent=\skip103
+\cftfignumwidth=\skip104
+\c@lofdepth=\count277
+\c@lotdepth=\count278
+\cftbeforelottitleskip=\skip105
+\cftafterlottitleskip=\skip106
+\cftbeforetabskip=\skip107
+\cfttabindent=\skip108
+\cfttabnumwidth=\skip109
+)
+\@indexfile=\write3
+\openout3 = `refman.idx'.
+
+
+Writing index file refman.idx
+
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/generic/iftex\ifpdf.st
+y"
+Package: ifpdf 2019/10/25 v3.4 ifpdf legacy package. Use iftex instead.
+)
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/hyperref\hyperre
+f.sty"
+Package: hyperref 2020-05-15 v7.00e Hypertext links for LaTeX
+
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/generic/ltxcmds\ltxcmd
+s.sty"
+Package: ltxcmds 2019/12/15 v1.24 LaTeX kernel commands for general use (HO)
+)
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/pdftexcmds\pdfte
+xcmds.sty"
+Package: pdftexcmds 2019/11/24 v0.31 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/generic/infwarerr\infw
+arerr.sty"
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/generic/kvsetkeys\kvse
+tkeys.sty"
+Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
+)
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/generic/kvdefinekeys\k
+vdefinekeys.sty"
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+)
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pdfescape\pdfe
+scape.sty"
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+)
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/hycolor\hycolor.
+sty"
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+)
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/letltxmacro\letl
+txmacro.sty"
+Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
+)
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/auxhook\auxhook.
+sty"
+Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
+)
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/kvoptions\kvopti
+ons.sty"
+Package: kvoptions 2019/11/29 v3.13 Key value format for package options (HO)
+)
+\@linkdim=\dimen188
+\Hy@linkcounter=\count279
+\Hy@pagecounter=\count280
+
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/hyperref\pd1enc.
+def"
+File: pd1enc.def 2020-05-15 v7.00e Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+)
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/generic/intcalc\intcal
+c.sty"
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/generic/etexcmds\etexc
+mds.sty"
+Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
+)
+\Hy@SavedSpaceFactor=\count281
+Package hyperref Info: Hyper figures OFF on input line 4464.
+Package hyperref Info: Link nesting OFF on input line 4469.
+Package hyperref Info: Hyper index ON on input line 4472.
+Package hyperref Info: Plain pages OFF on input line 4479.
+Package hyperref Info: Backreferencing ON on input line 4482.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4717.
+
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/hyperref\backref
+.sty"
+Package: backref 2020/01/14 v1.40 Bibliographical back referencing
+
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/rerunfilecheck\r
+erunfilecheck.sty"
+Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
+
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/atveryend\atvery
+end.sty"
+Package: atveryend 2019-12-11 v1.11 Hooks at the very end of document (HO)
+Package atveryend Info: \enddocument detected (standard20110627).
+)
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/generic/uniquecounter\
+uniquecounter.sty"
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/generic/bigintcalc\big
+intcalc.sty"
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
+))
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+86.
+))
+\c@Hy@tempcnt=\count282
+
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/latex/url\url.sty"
+\Urlmuskip=\muskip16
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 5076.
+\XeTeXLinkMargin=\dimen189
+
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/generic/bitset\bitset.
+sty"
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+)
+\Fld@menulength=\count283
+\Field@Width=\dimen190
+\Fld@charsize=\dimen191
+Package hyperref Info: Hyper figures OFF on input line 6347.
+Package hyperref Info: Link nesting OFF on input line 6352.
+Package hyperref Info: Hyper index ON on input line 6355.
+Package hyperref Info: backreferencing ON on input line 6360.
+Package hyperref Info: Link coloring OFF on input line 6367.
+Package hyperref Info: Link coloring with OCG OFF on input line 6372.
+Package hyperref Info: PDF/A mode OFF on input line 6377.
+LaTeX Info: Redefining \ref on input line 6417.
+LaTeX Info: Redefining \pageref on input line 6421.
+
+("C:\Users\valvano\AppData\Local\Programs\MiKTeX 2.9\tex/generic/atbegshi\atbeg
+shi.sty"
+Package: atbegshi 2019/12/05 v1.19 At begin shipout hook (HO)
+)
+\Hy@abspage=\count284
+\c@Item=\count285
+\c@Hfootnote=\count286
+)
+P

@@ -1,0 +1,145 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+################################################################################
+
+SHELL = cmd.exe
+
+# Add inputs and outputs from these tool invocations to the build variables 
+CMD_SRCS += \
+../msp432p401r.cmd 
+
+ASM_SRCS += \
+../osasm.asm 
+
+C_SRCS += \
+C:/Users/jonat/OneDrive/Desktop/test/MSP432/inc/Clock.c \
+C:/Users/jonat/OneDrive/Desktop/test/MSP432/inc/CortexM.c \
+C:/Users/jonat/OneDrive/Desktop/test/MSP432/inc/Fona.c \
+../Fona_main.c \
+C:/Users/jonat/OneDrive/Desktop/test/MSP432/inc/HDC2080.c \
+C:/Users/jonat/OneDrive/Desktop/test/MSP432/inc/I2CB1.c \
+C:/Users/jonat/OneDrive/Desktop/test/MSP432/inc/LaunchPad.c \
+C:/Users/jonat/OneDrive/Desktop/test/MSP432/inc/OPT3001.c \
+C:/Users/jonat/OneDrive/Desktop/test/MSP432/inc/TMP117.c \
+../Texas.c \
+C:/Users/jonat/OneDrive/Desktop/test/MSP432/inc/TimerA0.c \
+C:/Users/jonat/OneDrive/Desktop/test/MSP432/inc/UART0.c \
+C:/Users/jonat/OneDrive/Desktop/test/MSP432/inc/UART1.c \
+C:/Users/jonat/OneDrive/Desktop/test/MSP432/inc/bmi160.c \
+C:/Users/jonat/OneDrive/Desktop/test/MSP432/inc/bmm150.c \
+../os.c \
+../startup_msp432p401r_ccs.c \
+../system_msp432p401r.c 
+
+C_DEPS += \
+./Clock.d \
+./CortexM.d \
+./Fona.d \
+./Fona_main.d \
+./HDC2080.d \
+./I2CB1.d \
+./LaunchPad.d \
+./OPT3001.d \
+./TMP117.d \
+./Texas.d \
+./TimerA0.d \
+./UART0.d \
+./UART1.d \
+./bmi160.d \
+./bmm150.d \
+./os.d \
+./startup_msp432p401r_ccs.d \
+./system_msp432p401r.d 
+
+OBJS += \
+./Clock.obj \
+./CortexM.obj \
+./Fona.obj \
+./Fona_main.obj \
+./HDC2080.obj \
+./I2CB1.obj \
+./LaunchPad.obj \
+./OPT3001.obj \
+./TMP117.obj \
+./Texas.obj \
+./TimerA0.obj \
+./UART0.obj \
+./UART1.obj \
+./bmi160.obj \
+./bmm150.obj \
+./os.obj \
+./osasm.obj \
+./startup_msp432p401r_ccs.obj \
+./system_msp432p401r.obj 
+
+ASM_DEPS += \
+./osasm.d 
+
+OBJS__QUOTED += \
+"Clock.obj" \
+"CortexM.obj" \
+"Fona.obj" \
+"Fona_main.obj" \
+"HDC2080.obj" \
+"I2CB1.obj" \
+"LaunchPad.obj" \
+"OPT3001.obj" \
+"TMP117.obj" \
+"Texas.obj" \
+"TimerA0.obj" \
+"UART0.obj" \
+"UART1.obj" \
+"bmi160.obj" \
+"bmm150.obj" \
+"os.obj" \
+"osasm.obj" \
+"startup_msp432p401r_ccs.obj" \
+"system_msp432p401r.obj" 
+
+C_DEPS__QUOTED += \
+"Clock.d" \
+"CortexM.d" \
+"Fona.d" \
+"Fona_main.d" \
+"HDC2080.d" \
+"I2CB1.d" \
+"LaunchPad.d" \
+"OPT3001.d" \
+"TMP117.d" \
+"Texas.d" \
+"TimerA0.d" \
+"UART0.d" \
+"UART1.d" \
+"bmi160.d" \
+"bmm150.d" \
+"os.d" \
+"startup_msp432p401r_ccs.d" \
+"system_msp432p401r.d" 
+
+ASM_DEPS__QUOTED += \
+"osasm.d" 
+
+C_SRCS__QUOTED += \
+"C:/Users/jonat/OneDrive/Desktop/test/MSP432/inc/Clock.c" \
+"C:/Users/jonat/OneDrive/Desktop/test/MSP432/inc/CortexM.c" \
+"C:/Users/jonat/OneDrive/Desktop/test/MSP432/inc/Fona.c" \
+"../Fona_main.c" \
+"C:/Users/jonat/OneDrive/Desktop/test/MSP432/inc/HDC2080.c" \
+"C:/Users/jonat/OneDrive/Desktop/test/MSP432/inc/I2CB1.c" \
+"C:/Users/jonat/OneDrive/Desktop/test/MSP432/inc/LaunchPad.c" \
+"C:/Users/jonat/OneDrive/Desktop/test/MSP432/inc/OPT3001.c" \
+"C:/Users/jonat/OneDrive/Desktop/test/MSP432/inc/TMP117.c" \
+"../Texas.c" \
+"C:/Users/jonat/OneDrive/Desktop/test/MSP432/inc/TimerA0.c" \
+"C:/Users/jonat/OneDrive/Desktop/test/MSP432/inc/UART0.c" \
+"C:/Users/jonat/OneDrive/Desktop/test/MSP432/inc/UART1.c" \
+"C:/Users/jonat/OneDrive/Desktop/test/MSP432/inc/bmi160.c" \
+"C:/Users/jonat/OneDrive/Desktop/test/MSP432/inc/bmm150.c" \
+"../os.c" \
+"../startup_msp432p401r_ccs.c" \
+"../system_msp432p401r.c" 
+
+ASM_SRCS__QUOTED += \
+"../osasm.asm" 
+
+

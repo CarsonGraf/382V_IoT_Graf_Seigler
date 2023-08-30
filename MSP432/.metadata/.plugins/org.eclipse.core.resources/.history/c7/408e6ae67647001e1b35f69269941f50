@@ -1,0 +1,145 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+################################################################################
+
+SHELL = cmd.exe
+
+# Add inputs and outputs from these tool invocations to the build variables 
+CMD_SRCS += \
+../msp432p401r.cmd 
+
+ASM_SRCS += \
+../osasm.asm 
+
+C_SRCS += \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/ADC14.c \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/Clock.c \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/CortexM.c \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/HDC2080.c \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/I2CB1.c \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/LaunchPad.c \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/OPT3001.c \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/Profile.c \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/SIM7600G.c \
+../SIM7600main.c \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/TMP117.c \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/UART0.c \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/UART1.c \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/bmi160.c \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/bmm150.c \
+../os.c \
+../startup_msp432p401r_ccs.c \
+../system_msp432p401r.c 
+
+C_DEPS += \
+./ADC14.d \
+./Clock.d \
+./CortexM.d \
+./HDC2080.d \
+./I2CB1.d \
+./LaunchPad.d \
+./OPT3001.d \
+./Profile.d \
+./SIM7600G.d \
+./SIM7600main.d \
+./TMP117.d \
+./UART0.d \
+./UART1.d \
+./bmi160.d \
+./bmm150.d \
+./os.d \
+./startup_msp432p401r_ccs.d \
+./system_msp432p401r.d 
+
+OBJS += \
+./ADC14.obj \
+./Clock.obj \
+./CortexM.obj \
+./HDC2080.obj \
+./I2CB1.obj \
+./LaunchPad.obj \
+./OPT3001.obj \
+./Profile.obj \
+./SIM7600G.obj \
+./SIM7600main.obj \
+./TMP117.obj \
+./UART0.obj \
+./UART1.obj \
+./bmi160.obj \
+./bmm150.obj \
+./os.obj \
+./osasm.obj \
+./startup_msp432p401r_ccs.obj \
+./system_msp432p401r.obj 
+
+ASM_DEPS += \
+./osasm.d 
+
+OBJS__QUOTED += \
+"ADC14.obj" \
+"Clock.obj" \
+"CortexM.obj" \
+"HDC2080.obj" \
+"I2CB1.obj" \
+"LaunchPad.obj" \
+"OPT3001.obj" \
+"Profile.obj" \
+"SIM7600G.obj" \
+"SIM7600main.obj" \
+"TMP117.obj" \
+"UART0.obj" \
+"UART1.obj" \
+"bmi160.obj" \
+"bmm150.obj" \
+"os.obj" \
+"osasm.obj" \
+"startup_msp432p401r_ccs.obj" \
+"system_msp432p401r.obj" 
+
+C_DEPS__QUOTED += \
+"ADC14.d" \
+"Clock.d" \
+"CortexM.d" \
+"HDC2080.d" \
+"I2CB1.d" \
+"LaunchPad.d" \
+"OPT3001.d" \
+"Profile.d" \
+"SIM7600G.d" \
+"SIM7600main.d" \
+"TMP117.d" \
+"UART0.d" \
+"UART1.d" \
+"bmi160.d" \
+"bmm150.d" \
+"os.d" \
+"startup_msp432p401r_ccs.d" \
+"system_msp432p401r.d" 
+
+ASM_DEPS__QUOTED += \
+"osasm.d" 
+
+C_SRCS__QUOTED += \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/ADC14.c" \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/Clock.c" \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/CortexM.c" \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/HDC2080.c" \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/I2CB1.c" \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/LaunchPad.c" \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/OPT3001.c" \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/Profile.c" \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/SIM7600G.c" \
+"../SIM7600main.c" \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/TMP117.c" \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/UART0.c" \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/UART1.c" \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/bmi160.c" \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/MSP432/inc/bmm150.c" \
+"../os.c" \
+"../startup_msp432p401r_ccs.c" \
+"../system_msp432p401r.c" 
+
+ASM_SRCS__QUOTED += \
+"../osasm.asm" 
+
+
