@@ -12167,3 +12167,19 @@ gmake[1]: 'inc.out' is up to date.
 gmake[1]: 'inc.out' is up to date.
 
 **** Build Finished ****
+
+**** Build of configuration Debug for project MKII_Fitness_BLE ****
+
+"C:\\ti\\ccs1120\\ccs\\utils\\bin\\gmake" -k -j 16 all -O 
+ 
+gmake[1]: 'MKII_Fitness_BLE.out' is up to date.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project MKII_Fitness_BLE ****
+
+"C:\\ti\\ccs1120\\ccs\\utils\\bin\\gmake" -k -j 16 all -O 
+ 
+gmake[1]: 'MKII_Fitness_BLE.out' is up to date.
+
+**** Build Finished ****
