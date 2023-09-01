@@ -2,3 +2,4 @@
 Debug/
 *.obj
 *.d
+*.log
