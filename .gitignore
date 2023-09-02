@@ -1,5 +1,5 @@
 # ignore all build artifacts
-Debug/
+**/Debug/
 *.obj
 *.d
-/.metadata/
+**/.metadata/
