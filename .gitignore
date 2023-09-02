@@ -2,4 +2,4 @@
 **/Debug/
 *.obj
 *.d
-**/.metadata/
+**/.metadata/*
