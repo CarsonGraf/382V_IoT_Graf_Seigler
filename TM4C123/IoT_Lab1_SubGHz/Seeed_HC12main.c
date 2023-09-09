@@ -97,46 +97,11 @@ volatile uint32_t Time,MainCount;
 // PortB at 0x400053FC
 // PB4 bit-specific address is 0x40005040
 #define SET (*((volatile uint32_t *)0x40005040))
-char HC12data;
-uint32_t Message;
-int Flag; // semaphore
-// every 10ms
+
 void SysTick_Handler(void){
-  uint8_t in;
   PF3 ^= 0x08;       // toggle PF3
   PF3 ^= 0x08;       // toggle PF3
   Time = Time + 1;
-  uint8_t ThisInput = LaunchPad_Input()|Switch_Input();   // any button
-  if(ThisInput){
-    if((Time%100) == 0){ // 1 Hz
-      HC12data = HC12data^0x01; // toggle '0' to '1'
-      if(HC12data == 0x31){
-        Message = 1; // S1
-        PA4 = 0x10;  // green on
-        Flag = 1;    // signal
-       }else{
-        Message = 0; // S0
-        Flag = 1;    // signal
-        PA4 = 0;     // green off
-      }
-      UART1_OutChar(HC12data);
-    }
-  }
-  in = UART1_InCharNonBlock();
-  if(in){
-    switch(in){
-      case '0':
-        Message = 2; // R0
-        Flag = 1;    // signal
-        PA2 = 0;     // red off
-        break;
-      case '1':
-        Message = 3; // R1
-        Flag = 1;    // signal
-        PA2 = 4;     // RED
-        break;
-    }
-  }
   PF3 ^= 0x08;       // toggle PF3
 }
 
@@ -148,6 +113,9 @@ void HC12_ReadAllInput(void){uint8_t in;
     in = UART1_InCharNonBlock();
   }
 }
+
+char HC12data;
+
 void HC12_Init(void){
   SYSCTL_RCGCGPIO_R |= 0x00000002;  // activate clock for Port B
   while((SYSCTL_PRGPIO_R&0x02) == 0){};// allow time for clock to stabilize
@@ -185,63 +153,112 @@ void HC12_Init(void){
 /**
  * main.c
  */
-void main(void){int num=0;
-  PLL_Init(Bus80MHz);      // running on crystal
-  Time = MainCount = 0;
-  SysTick_Init(800000);   // set up SysTick for 100 Hz interrupts
-  LaunchPad_Init();       // PF4-PF0 LaunchPad
-  Switch_Init();          // PE3-PE0 switches
-  LED_Init();             // PF4-PF2 LEDs
-  PA3 = 0x08;             // yellow on
-  Output_Init();          // serial port to PC for debugging
-  SSD1306_Init(SSD1306_SWITCHCAPVCC);
-  SSD1306_OutClear();
-  SSD1306_SetCursor(0,0);
-  SSD1306_OutString("-- ECE382V --F23 --\n");
-  SSD1306_OutString(" Lab 1\n");
-  SSD1306_OutString(" Seeed_HC12 example\n");
-  SSD1306_OutString(" Valvano\n");
-  EnableInterrupts();
-  printf("\nSeeed_HC12 example --F23--Valvano\n");
-  HC12_Init();
-  SSD1306_OutString(" RF_XMT init done\n");
-  SSD1306_OutString("\nHold switch for 1s\n");
-  PA3 = 0x00;             // yellow off
-  while(1){ // USER Output in main (not ISR)
-    WaitForInterrupt();
-     // foreground thread
-    MainCount++;
-    if(Flag){ // wait on semaphore
-      num++;
-      if(num == 1){
-        SSD1306_OutClear();
-      }
-      SSD1306_OutUDec16(num);
-      SSD1306_OutChar(' ');
-      Flag = 0; //
-      switch(Message){
-        case 0:
-          printf("S0\n");
-          SSD1306_OutString("S0\n");
-          break;
-        case 1:
-          printf("S1\n");
-          SSD1306_OutString("S1\n");
-          break;
-        case 2:
-          printf("R0\n");
-          SSD1306_OutString("R0\n");
-          break;
-        case 3:
-          printf("R1\n");
-          SSD1306_OutString("R1\n");
-          break;
-      }
+
+
+void main(void){
+    int counter = 0;
+    int wait_count = 0;
+    char rx_string[32] = {0};
+    char tx_counter = 1;
+    char rx_counter = 1;
+    char clear_to_send = 0;
+
+    PLL_Init(Bus80MHz);      // running on crystal
+    Time = MainCount = 0;
+    SysTick_Init(800000);   // set up SysTick for 100 Hz interrupts
+    LaunchPad_Init();       // PF4-PF0 LaunchPad
+    Switch_Init();          // PE3-PE0 switches
+    LED_Init();             // PF4-PF2 LEDs
+    PA3 = 0x08;             // yellow on
+    Output_Init();          // serial port to PC for debugging
+    SSD1306_Init(SSD1306_SWITCHCAPVCC);
+    SSD1306_OutClear();
+    SSD1306_SetCursor(0,0);
+    SSD1306_OutString("TX:\n");
+    SSD1306_SetCursor(0,2);
+    SSD1306_OutString("RX:\n");
+    EnableInterrupts();
+    HC12_Init();
+    while(1)
+    {
+        WaitForInterrupt();
+        MainCount++;
+
+        if(!(Time%100))
+        {
+            if(clear_to_send || (wait_count >= 5))
+            {
+                UART1_OutChar('S');
+                UART1_OutChar(tx_counter);
+                SSD1306_SetCursor(0,1);
+                SSD1306_OutUDec(tx_counter);
+                clear_to_send = 0;
+                wait_count = 0;
+            }
+            else
+            {
+                wait_count += 1;
+            }
+        }
+
+        char in = 0;
+        while(in = UART1_InCharNonBlock())
+        {
+            rx_string[counter] = in;
+            counter++;
+        }
+
+        switch(counter)
+        {
+            case 0 :
+            case 1 :
+            break;
+            case 2 :
+                switch(rx_string[0])
+                {
+                    case 'R' :
+                        tx_counter = (tx_counter % 99) + 1;
+                        clear_to_send = 1;
+                    break;
+                    case 'E' :
+                        tx_counter = rx_string[1];
+                        clear_to_send = 1;
+                    break;
+                    case 'S' :
+                        if(rx_string[1] == rx_counter)
+                        {
+                            UART1_OutChar('R');
+                            UART1_OutChar(rx_counter);
+                            SSD1306_SetCursor(0,3);
+                            SSD1306_OutUDec(rx_counter);
+                            rx_counter = (rx_counter % 99) + 1;
+                        }
+                        else
+                        {
+                            UART1_OutChar('E');
+                            UART1_OutChar(rx_counter);
+                        }
+                    break;
+                    default :
+                        UART1_OutChar('E');
+                        UART1_OutChar(rx_counter);
+                    break;
+                }
+                counter = 0;
+            break;
+            default :
+                UART1_OutChar('E');
+                UART1_OutChar(rx_counter);
+                counter = 0;
+            break;
+        }
     }
-  }
 }
 
-void WaitSwitch(void){uint8_t ThisInput;
+
+void WaitSwitch(void)
+{
+  uint8_t ThisInput;
   do{// either button
     ThisInput = LaunchPad_Input(); // wait while release
   }while(ThisInput==0);
@@ -249,6 +266,8 @@ void WaitSwitch(void){uint8_t ThisInput;
     ThisInput = LaunchPad_Input(); // wait while touched
   }while(ThisInput);
 }
+
+
 void HC12_ResetFactorySetting(void){
   SSD1306_OutClear();
   SSD1306_SetCursor(0,0);
@@ -288,7 +307,7 @@ void main2(void){
   LaunchPad_Init();         // P1.0 is red LED on LaunchPad
   Output_Init();          // serial port to PC for debugging
   SSD1306_Init(SSD1306_SWITCHCAPVCC);
-  HC12_ResetFactorySetting();
+  //HC12_ResetFactorySetting();
   while(1){
   }
  }

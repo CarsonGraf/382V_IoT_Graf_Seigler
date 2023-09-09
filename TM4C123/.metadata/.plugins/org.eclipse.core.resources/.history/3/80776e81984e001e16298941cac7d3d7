@@ -1,0 +1,89 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+################################################################################
+
+SHELL = cmd.exe
+
+# Add inputs and outputs from these tool invocations to the build variables 
+CMD_SRCS += \
+../tm4c123gh6pm.cmd 
+
+C_SRCS += \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/CortexM.c \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/I2C3.c \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/I2CB1.c \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/LaunchPad.c \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/PLL.c \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/SSD1306.c \
+../Seeed_HC12main.c \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/SysTickInts.c \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/UART.c \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/UART1int.c \
+../tm4c123gh6pm_startup_ccs.c 
+
+C_DEPS += \
+./CortexM.d \
+./I2C3.d \
+./I2CB1.d \
+./LaunchPad.d \
+./PLL.d \
+./SSD1306.d \
+./Seeed_HC12main.d \
+./SysTickInts.d \
+./UART.d \
+./UART1int.d \
+./tm4c123gh6pm_startup_ccs.d 
+
+OBJS += \
+./CortexM.obj \
+./I2C3.obj \
+./I2CB1.obj \
+./LaunchPad.obj \
+./PLL.obj \
+./SSD1306.obj \
+./Seeed_HC12main.obj \
+./SysTickInts.obj \
+./UART.obj \
+./UART1int.obj \
+./tm4c123gh6pm_startup_ccs.obj 
+
+OBJS__QUOTED += \
+"CortexM.obj" \
+"I2C3.obj" \
+"I2CB1.obj" \
+"LaunchPad.obj" \
+"PLL.obj" \
+"SSD1306.obj" \
+"Seeed_HC12main.obj" \
+"SysTickInts.obj" \
+"UART.obj" \
+"UART1int.obj" \
+"tm4c123gh6pm_startup_ccs.obj" 
+
+C_DEPS__QUOTED += \
+"CortexM.d" \
+"I2C3.d" \
+"I2CB1.d" \
+"LaunchPad.d" \
+"PLL.d" \
+"SSD1306.d" \
+"Seeed_HC12main.d" \
+"SysTickInts.d" \
+"UART.d" \
+"UART1int.d" \
+"tm4c123gh6pm_startup_ccs.d" 
+
+C_SRCS__QUOTED += \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/CortexM.c" \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/I2C3.c" \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/I2CB1.c" \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/LaunchPad.c" \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/PLL.c" \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/SSD1306.c" \
+"../Seeed_HC12main.c" \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/SysTickInts.c" \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/UART.c" \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/UART1int.c" \
+"../tm4c123gh6pm_startup_ccs.c" 
+
+
