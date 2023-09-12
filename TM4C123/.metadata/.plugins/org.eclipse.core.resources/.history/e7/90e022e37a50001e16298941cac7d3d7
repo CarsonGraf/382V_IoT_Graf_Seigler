@@ -1,0 +1,71 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+################################################################################
+
+SHELL = cmd.exe
+
+# Add inputs and outputs from these tool invocations to the build variables 
+CMD_SRCS += \
+../tm4c123gh6pm.cmd 
+
+C_SRCS += \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/CortexM.c \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/LaunchPad.c \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/PLL.c \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/ST7735.c \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/Timer4A.c \
+../UltrasoundTestMain.c \
+../tm4c123gh6pm_startup_ccs.c \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/ultrasound.c 
+
+C_DEPS += \
+./CortexM.d \
+./LaunchPad.d \
+./PLL.d \
+./ST7735.d \
+./Timer4A.d \
+./UltrasoundTestMain.d \
+./tm4c123gh6pm_startup_ccs.d \
+./ultrasound.d 
+
+OBJS += \
+./CortexM.obj \
+./LaunchPad.obj \
+./PLL.obj \
+./ST7735.obj \
+./Timer4A.obj \
+./UltrasoundTestMain.obj \
+./tm4c123gh6pm_startup_ccs.obj \
+./ultrasound.obj 
+
+OBJS__QUOTED += \
+"CortexM.obj" \
+"LaunchPad.obj" \
+"PLL.obj" \
+"ST7735.obj" \
+"Timer4A.obj" \
+"UltrasoundTestMain.obj" \
+"tm4c123gh6pm_startup_ccs.obj" \
+"ultrasound.obj" 
+
+C_DEPS__QUOTED += \
+"CortexM.d" \
+"LaunchPad.d" \
+"PLL.d" \
+"ST7735.d" \
+"Timer4A.d" \
+"UltrasoundTestMain.d" \
+"tm4c123gh6pm_startup_ccs.d" \
+"ultrasound.d" 
+
+C_SRCS__QUOTED += \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/CortexM.c" \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/LaunchPad.c" \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/PLL.c" \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/ST7735.c" \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/Timer4A.c" \
+"../UltrasoundTestMain.c" \
+"../tm4c123gh6pm_startup_ccs.c" \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/ultrasound.c" 
+
+

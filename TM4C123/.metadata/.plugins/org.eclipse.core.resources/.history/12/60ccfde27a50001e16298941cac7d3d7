@@ -1,0 +1,59 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+################################################################################
+
+SHELL = cmd.exe
+
+# Add inputs and outputs from these tool invocations to the build variables 
+CMD_SRCS += \
+../tm4c123gh6pm.cmd 
+
+C_SRCS += \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/CortexM.c \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/LaunchPad.c \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/PLL.c \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/ST7735.c \
+../ST7735TestMain.c \
+../tm4c123gh6pm_startup_ccs.c 
+
+C_DEPS += \
+./CortexM.d \
+./LaunchPad.d \
+./PLL.d \
+./ST7735.d \
+./ST7735TestMain.d \
+./tm4c123gh6pm_startup_ccs.d 
+
+OBJS += \
+./CortexM.obj \
+./LaunchPad.obj \
+./PLL.obj \
+./ST7735.obj \
+./ST7735TestMain.obj \
+./tm4c123gh6pm_startup_ccs.obj 
+
+OBJS__QUOTED += \
+"CortexM.obj" \
+"LaunchPad.obj" \
+"PLL.obj" \
+"ST7735.obj" \
+"ST7735TestMain.obj" \
+"tm4c123gh6pm_startup_ccs.obj" 
+
+C_DEPS__QUOTED += \
+"CortexM.d" \
+"LaunchPad.d" \
+"PLL.d" \
+"ST7735.d" \
+"ST7735TestMain.d" \
+"tm4c123gh6pm_startup_ccs.d" 
+
+C_SRCS__QUOTED += \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/CortexM.c" \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/LaunchPad.c" \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/PLL.c" \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/ST7735.c" \
+"../ST7735TestMain.c" \
+"../tm4c123gh6pm_startup_ccs.c" 
+
+

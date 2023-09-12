@@ -1,8 +1,0 @@
-
-**** Build of configuration Debug for project inc ****
-
-"C:\\ti\\ccs1120\\ccs\\utils\\bin\\gmake" -k -j 16 all -O 
- 
-gmake[1]: 'inc.out' is up to date.
-
-**** Build Finished ****

@@ -1,0 +1,131 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+################################################################################
+
+SHELL = cmd.exe
+
+# Add inputs and outputs from these tool invocations to the build variables 
+CMD_SRCS += \
+../tm4c123gh6pm.cmd 
+
+C_SRCS += \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/LaunchPad.c \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/platform/ek-tm4c123gxl/board.c \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/simplelink/source/device.c \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/simplelink/source/driver.c \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/simplelink/source/flowcont.c \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/simplelink/source/fs.c \
+../main.c \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/simplelink/source/netapp.c \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/simplelink/source/netcfg.c \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/simplelink/source/nonos.c \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/simplelink/source/socket.c \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/simplelink/source/spawn.c \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/platform/ek-tm4c123gxl/spi.c \
+../startup_ccs.c \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/platform/ek-tm4c123gxl/uart.c \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/platform/ek-tm4c123gxl/uartstdio.c \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/platform/ek-tm4c123gxl/ustdlib.c \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/simplelink/source/wlan.c 
+
+C_DEPS += \
+./LaunchPad.d \
+./board.d \
+./device.d \
+./driver.d \
+./flowcont.d \
+./fs.d \
+./main.d \
+./netapp.d \
+./netcfg.d \
+./nonos.d \
+./socket.d \
+./spawn.d \
+./spi.d \
+./startup_ccs.d \
+./uart.d \
+./uartstdio.d \
+./ustdlib.d \
+./wlan.d 
+
+OBJS += \
+./LaunchPad.obj \
+./board.obj \
+./device.obj \
+./driver.obj \
+./flowcont.obj \
+./fs.obj \
+./main.obj \
+./netapp.obj \
+./netcfg.obj \
+./nonos.obj \
+./socket.obj \
+./spawn.obj \
+./spi.obj \
+./startup_ccs.obj \
+./uart.obj \
+./uartstdio.obj \
+./ustdlib.obj \
+./wlan.obj 
+
+OBJS__QUOTED += \
+"LaunchPad.obj" \
+"board.obj" \
+"device.obj" \
+"driver.obj" \
+"flowcont.obj" \
+"fs.obj" \
+"main.obj" \
+"netapp.obj" \
+"netcfg.obj" \
+"nonos.obj" \
+"socket.obj" \
+"spawn.obj" \
+"spi.obj" \
+"startup_ccs.obj" \
+"uart.obj" \
+"uartstdio.obj" \
+"ustdlib.obj" \
+"wlan.obj" 
+
+C_DEPS__QUOTED += \
+"LaunchPad.d" \
+"board.d" \
+"device.d" \
+"driver.d" \
+"flowcont.d" \
+"fs.d" \
+"main.d" \
+"netapp.d" \
+"netcfg.d" \
+"nonos.d" \
+"socket.d" \
+"spawn.d" \
+"spi.d" \
+"startup_ccs.d" \
+"uart.d" \
+"uartstdio.d" \
+"ustdlib.d" \
+"wlan.d" 
+
+C_SRCS__QUOTED += \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/LaunchPad.c" \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/platform/ek-tm4c123gxl/board.c" \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/simplelink/source/device.c" \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/simplelink/source/driver.c" \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/simplelink/source/flowcont.c" \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/simplelink/source/fs.c" \
+"../main.c" \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/simplelink/source/netapp.c" \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/simplelink/source/netcfg.c" \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/simplelink/source/nonos.c" \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/simplelink/source/socket.c" \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/simplelink/source/spawn.c" \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/platform/ek-tm4c123gxl/spi.c" \
+"../startup_ccs.c" \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/platform/ek-tm4c123gxl/uart.c" \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/platform/ek-tm4c123gxl/uartstdio.c" \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/platform/ek-tm4c123gxl/ustdlib.c" \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/simplelink/source/wlan.c" 
+
+

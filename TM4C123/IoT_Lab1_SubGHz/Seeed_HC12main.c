@@ -74,6 +74,8 @@ policies, either expressed or implied, of the FreeBSD Project.
 
 #include <stdint.h>
 #include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
 #include "../inc/tm4c123gh6pm.h"
 #include "../inc/UART.h"
 #include "../inc/UART1int.h"
@@ -82,6 +84,7 @@ policies, either expressed or implied, of the FreeBSD Project.
 #include "../inc/PLL.h"
 #include "../inc/LaunchPad.h"
 #include "../inc/CortexM.h"
+#include "protocol.h"
 #define PE3  (*((volatile uint32_t *)0x40024020))   // UP
 #define PE2  (*((volatile uint32_t *)0x40024010))   // RIGHT
 #define PE1  (*((volatile uint32_t *)0x40024008))   // LEFT
@@ -98,10 +101,72 @@ volatile uint32_t Time,MainCount;
 // PB4 bit-specific address is 0x40005040
 #define SET (*((volatile uint32_t *)0x40005040))
 
+node_data_t node_table[net_size] = {0};
+network_data_t net_table = {0};
+stream_t stream = {0};
+
 void SysTick_Handler(void){
   PF3 ^= 0x08;       // toggle PF3
   PF3 ^= 0x08;       // toggle PF3
   Time = Time + 1;
+  if(update_rx_stream(&stream))
+  {
+      if(!check_stream(&stream))
+      {
+          if(!net_table.initialized)
+          {
+              parse_init(&stream, &net_table);
+              Time = 0;
+              SSD1306_SetCursor(0, 0);
+              SSD1306_OutString("Initialized");
+              SSD1306_OutUDec(net_table.id);
+          }
+          else
+          {
+              int src = 0;
+              int num_mem = net_table.size;
+              if(parse_stream(&stream, node_table, &net_table, &src))
+              {
+                  SSD1306_SetCursor(0, 5);
+                  SSD1306_OutString(node_table[src].data);
+              }
+
+              if(num_mem != net_table.size)
+              {
+                  SSD1306_SetCursor(0, 3);
+                  SSD1306_OutUDec(net_table.size);
+              }
+          }
+      }
+      stream.state = garbage;
+  }
+  if(Switch_Input() && !net_table.initialized)
+  {
+      net_table.cur_slot = 0;
+      net_table.id = 0;
+      net_table.initialized = 1;
+      net_table.size = 0;
+      Time = 0;
+      SSD1306_SetCursor(0, 0);
+      SSD1306_OutString("Initialized ");
+      SSD1306_OutUDec(net_table.id);
+      //net_table.slot_stamp
+  }
+
+  if(Time >= 100)
+  {
+      PA3 ^= 0x08;
+      Time = 0;
+      if(net_table.initialized)
+      {
+          net_table.cur_slot = (net_table.cur_slot + 1) % net_size;
+          if(net_table.cur_slot == net_table.id)
+          {
+              send_updates(&net_table, node_table);
+          }
+      }
+  }
+
   PF3 ^= 0x08;       // toggle PF3
 }
 
@@ -156,13 +221,6 @@ void HC12_Init(void){
 
 
 void main(void){
-    int counter = 0;
-    int wait_count = 0;
-    char rx_string[32] = {0};
-    char tx_counter = 1;
-    char rx_counter = 1;
-    char clear_to_send = 0;
-
     PLL_Init(Bus80MHz);      // running on crystal
     Time = MainCount = 0;
     SysTick_Init(800000);   // set up SysTick for 100 Hz interrupts
@@ -171,87 +229,44 @@ void main(void){
     LED_Init();             // PF4-PF2 LEDs
     PA3 = 0x08;             // yellow on
     Output_Init();          // serial port to PC for debugging
+
     SSD1306_Init(SSD1306_SWITCHCAPVCC);
     SSD1306_OutClear();
-    SSD1306_SetCursor(0,0);
-    SSD1306_OutString("TX:\n");
-    SSD1306_SetCursor(0,2);
-    SSD1306_OutString("RX:\n");
+    SSD1306_SetCursor(0, 2);
+    SSD1306_OutString("Network members: ");
+    SSD1306_SetCursor(0, 4);
+    SSD1306_OutString("Message: ");
+
     EnableInterrupts();
     HC12_Init();
     while(1)
+    {}
+    while(1)
     {
-        WaitForInterrupt();
-        MainCount++;
-
-        if(!(Time%100))
+        char input[max_msg+6];
+        int dest = 0;
+        printf("Enter an Address: \n");
+        memset(input, 0, sizeof(input));
+        if(scanf("%i",&dest) != 1)
         {
-            if(clear_to_send || (wait_count >= 5))
-            {
-                UART1_OutChar('S');
-                UART1_OutChar(tx_counter);
-                SSD1306_SetCursor(0,1);
-                SSD1306_OutUDec(tx_counter);
-                clear_to_send = 0;
-                wait_count = 0;
-            }
-            else
-            {
-                wait_count += 1;
-            }
+            printf("\nincorrect format\n");
+            goto END;
         }
-
-        char in = 0;
-        while(in = UART1_InCharNonBlock())
+        if(dest > 5)
         {
-            rx_string[counter] = in;
-            counter++;
+            printf("\ntoo big %i\n",dest);
+            goto END;
         }
-
-        switch(counter)
+        printf("\n");
+        printf("Enter your message\n");
+        if(scanf("%30s", input) != 1)
         {
-            case 0 :
-            case 1 :
-            break;
-            case 2 :
-                switch(rx_string[0])
-                {
-                    case 'R' :
-                        tx_counter = (tx_counter % 99) + 1;
-                        clear_to_send = 1;
-                    break;
-                    case 'E' :
-                        tx_counter = rx_string[1];
-                        clear_to_send = 1;
-                    break;
-                    case 'S' :
-                        if(rx_string[1] == rx_counter)
-                        {
-                            UART1_OutChar('R');
-                            UART1_OutChar(rx_counter);
-                            SSD1306_SetCursor(0,3);
-                            SSD1306_OutUDec(rx_counter);
-                            rx_counter = (rx_counter % 99) + 1;
-                        }
-                        else
-                        {
-                            UART1_OutChar('E');
-                            UART1_OutChar(rx_counter);
-                        }
-                    break;
-                    default :
-                        UART1_OutChar('E');
-                        UART1_OutChar(rx_counter);
-                    break;
-                }
-                counter = 0;
-            break;
-            default :
-                UART1_OutChar('E');
-                UART1_OutChar(rx_counter);
-                counter = 0;
-            break;
+            printf("\nbad string\n");
+            goto END;
         }
+        printf("\n%s\n",input);
+        END :
+
     }
 }
 

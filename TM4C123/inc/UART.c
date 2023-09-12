@@ -261,7 +261,7 @@ int fputc(int ch, FILE *f){
     return 1;
   }
   UART_OutChar(ch);
-  return 1;
+  return ch;//1;
 }
 // Get input from UART, echo
 int fgetc (FILE *f){

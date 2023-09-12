@@ -1,0 +1,160 @@
+/*
+ * protocol.c
+ *
+ *  Created on: Sep 9, 2023
+ *      Author: cgraf
+ */
+
+#include "protocol.h"
+#include "stdint.h"
+#include "stdbool.h"
+
+int check_msg();
+
+#define filter      0xF0
+#define net_size    6
+#define max_msg     32
+
+typedef enum echo_state_proto
+{
+    no_action,
+    tb_echoed,
+    tb_ack,
+}echo_state_t;
+
+typedef struct node_data_proto
+{
+    uint8_t num;
+    echo_state_t state;
+    uint8_t src;
+    uint8_t dest;
+    uint8_t data[];
+    uint8_t len;
+}node_data_t;
+
+typedef struct network_data_proto
+{
+    uint8_t size;
+    uint8_t id;
+    bool initialized;
+    uint8_t cur_slot;
+    uint16_t slot_stamp;
+}network_data_t;
+
+typedef enum stream_state
+{
+    garbage,
+    fil1,
+    fil2,
+    fil3,
+    get_len,
+    listening,
+    ready,
+}stream_state_t;
+
+typedef struct stream_proto
+{
+    uint8_t data[256];
+    stream_state_t state;
+    uint8_t len;
+    uint8_t cur_len;
+}stream_t;
+
+int update_rx_stream(stream_t* stream)
+{
+    uint8_t in = 0;
+    while(RxFifo_Get(&in) == true)
+    {
+        switch(stream->state)
+        {
+            case garbage :
+                if(in == filter)
+                    stream.state = fil1;
+                break;
+            case fil1 :
+                if(in == filter)
+                    stream.state = fil2;
+                break;
+            case fil2 :
+                if(in == filter)
+                    stream.state = fil3;
+                break;
+            case fil3 :
+                if(in == filter)
+                    stream.state = get_len;
+                break;
+            case get_len :
+                stream->len = in;
+                stream->cur_len = 0;
+                stream->state = listening;
+                break;
+            case listening :
+                data[cur_len] = in;
+                stream->cur_len++;
+                if(stream->cur_len == len)
+                {
+                    stream->state = ready;
+                    return 1;
+                }
+                break;
+            default :
+                stream->state = garbage;
+                break;
+        }
+    }
+    return 0;
+}
+
+int check_stream(stream_t* stream)
+{
+    if(len<3)
+    {
+        return 1;
+    }
+    if(stream->state != ready)
+    {
+        return 1;
+    }
+}
+
+enum parser_state
+{
+    type,
+    ack_src,
+    ack_num,
+    msg_dest,
+    msg_src,
+    msg_num,
+    msg_len,
+    data,
+};
+
+void parse_stream(stream_t* stream, node_data_t* node_table, network_data_t* net_table)
+{
+    int state = type
+    for(int i = 0; i++; i<stream->len)
+    {
+        switch(state)
+        {
+            case type :
+                if(i==0)
+                    state = ack_src;
+                else
+                    state = msg_dest;
+                break;
+            case ack_src :
+                if(ack_src)
+
+        }
+    }
+}
+
+void send_updates();
+{
+    //send fil
+    //send fil
+    //send fil
+    //send fil
+    //calculate len
+}
+

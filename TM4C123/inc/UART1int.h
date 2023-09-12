@@ -83,3 +83,8 @@ void UART1_OutString(uint8_t *pt);
 // Input: none
 // Output: none
 void UART1_FinishOutput(void);
+
+
+//aaaaa
+int RxFifo_Get(uint8_t * data);
+

@@ -1,0 +1,229 @@
+/*
+ * protocol.c
+ *
+ *  Created on: Sep 9, 2023
+ *      Author: cgraf
+ */
+
+#include <stdint.h>
+#include <stdbool.h>
+#include "protocol.h"
+#include "../inc/UART1int.h"
+
+int update_rx_stream(stream_t* stream)
+{
+    uint8_t in = 0;
+    while(RxFifo_Get(&in) == true)
+    {
+        switch(stream->state)
+        {
+            case garbage :
+                if(in == filter)
+                    stream->state = fil1;
+                break;
+            case fil1 :
+                if(in == filter)
+                    stream->state = fil2;
+                break;
+            case fil2 :
+                if(in == filter)
+                    stream->state = fil3;
+                break;
+            case fil3 :
+                if(in == filter)
+                    stream->state = get_len;
+                break;
+            case get_len :
+                stream->len = in;
+                stream->cur_len = 0;
+                stream->state = listening;
+                break;
+            case listening :
+                stream->data[stream->cur_len] = in;
+                stream->cur_len++;
+                if(stream->cur_len == stream->len)
+                {
+                    stream->state = ready;
+                    return 1;
+                }
+                break;
+            default :
+                stream->state = garbage;
+                break;
+        }
+    }
+    return 0;
+}
+
+int check_stream(stream_t* stream)
+{
+    if(stream->len<3)
+    {
+        return 1;
+    }
+    if(stream->state != ready)
+    {
+        return 1;
+    }
+    return 0;
+}
+
+enum parser_state
+{
+    type,
+    ack,
+    msg
+};
+
+void parse_init(stream_t* stream, network_data_t* net_table)
+{
+    if(!net_table->initialized && ((stream->data[0] + 1)<net_size))
+    {
+        net_table->id = stream->data[0] + 1;
+        net_table->size = stream->data[0] + 1;
+        net_table->cur_slot = stream->data[1];
+        net_table->initialized = true;
+    }
+}
+
+
+int parse_stream(stream_t* stream, node_data_t* node_table, network_data_t* net_table, int* new_src)
+{
+    int new_msg = 0;
+
+    if(stream->data[0] > net_table->size)
+    {
+        net_table->size = stream->data[0];
+    }
+
+    int state = type;
+
+    for(int i = 2; i < stream->len; i++)
+    {
+        switch(state)
+        {
+            case type :
+                if(stream->data[i] == 0)
+                    state = ack;
+                else
+                    state = msg;
+                break;
+            case ack :
+            {
+                int src = stream->data[i];
+                int num = stream->data[++i];
+                if(node_table[src].num != num)
+                {
+                    node_table[src].num = num;
+                    node_table[src].state = tb_ack;
+                }
+                state = type;
+                break;
+            }
+            case msg :
+            {
+                int src = stream->data[i];
+                int dest = stream->data[++i];
+                int num = stream->data[++i];
+                int len = stream->data[++i];
+
+                if(node_table[src].num == num)
+                {
+                    i += len;
+                }
+                else
+                {
+                    node_table[src].dest = dest;
+                    node_table[src].num = num;
+                    node_table[src].state = tb_echoed;
+                    node_table[src].len = len;
+                    if(dest == net_table->id)
+                    {
+                        *new_src = src;
+                        new_msg = 1;
+                    }
+
+                    for(int j = 0; j < len; j++)
+                    {
+                        node_table[src].data[j] = stream->data[++i];
+                    }
+                    state = type;
+                }
+                break;
+            }
+        }
+    }
+    return new_msg;
+}
+
+void send_updates(network_data_t * net_table, node_data_t * node_table)
+{
+    UART1_OutChar(filter);
+    UART1_OutChar(filter);
+    UART1_OutChar(filter);
+    UART1_OutChar(filter);
+    int i = 0;
+    int sum = 4;
+    int len = sum;
+    for(i = 0; i<net_size; i++)
+    {
+        if(node_table[i].state == tb_ack)
+        {
+            sum += 3; //type, num, state
+        }
+        else if(node_table[i].state == tb_echoed)
+        {
+            sum += 5; //type, src, dest, num, len
+            sum += node_table[i].len;
+        }
+
+        if(sum > max_packet)
+        {
+            i--;
+            break;
+        }
+        else
+        {
+            len = sum;
+        }
+    }
+    UART1_OutChar(len);
+    UART1_OutChar(net_table->size);
+    UART1_OutChar(net_table->id);
+    for(int j = 0; j<i; j++)
+    {
+        if(node_table[j].state == tb_ack)
+        {
+            UART1_OutChar(0);
+            UART1_OutChar(j);
+            UART1_OutChar(node_table[j].num);//type, num, state
+            node_table[j].state = no_action;
+        }
+        else if(node_table[j].state == tb_echoed)
+        {
+            UART1_OutChar(1);
+            UART1_OutChar(j);
+            UART1_OutChar(node_table[j].dest);
+            UART1_OutChar(node_table[j].num);
+            UART1_OutChar(node_table[j].len);
+            for(int k = 0; k < node_table[j].len; k++)
+            {
+                UART1_OutChar(node_table[j].data[k]);
+            }
+            node_table[j].state = no_action;
+        }
+    }
+}
+
+void send_message(network_data_t * net_table, node_data_t * node_table, uint8_t * data, uint8_t len, uint8_t dest)
+{
+    int id = net_table->id;
+    for(int i = 0; i < len && i<max_msg; i++)
+    {
+        node_table[id].data[i] = data[i];
+    }
+    node_table[id].dest = dest;
+    node_table[id].len = len;
+    node_table[id].num++;
+    node_table[id].state = tb_echoed;
+}

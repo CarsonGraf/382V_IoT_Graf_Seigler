@@ -1,0 +1,127 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+################################################################################
+
+SHELL = cmd.exe
+
+# Each subdirectory must supply rules for building sources it contributes
+LaunchPad.obj: C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/LaunchPad.c $(GEN_OPTS) | $(GEN_FILES) $(GEN_MISC_FILES)
+	@echo 'Building file: "$<"'
+	@echo 'Invoking: Arm Compiler'
+	"C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/utils" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/cc3100" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/cc3100/platform/ek-tm4c123gxl" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/simplelink/include" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/cc3100/simplelink/source" --define=ccs="ccs" --define=PART_TM4C123GH6PM -g --c99 --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="$(basename $(<F)).d_raw" $(GEN_OPTS__FLAG) "$<"
+	@echo 'Finished building: "$<"'
+	@echo ' '
+
+board.obj: C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/platform/ek-tm4c123gxl/board.c $(GEN_OPTS) | $(GEN_FILES) $(GEN_MISC_FILES)
+	@echo 'Building file: "$<"'
+	@echo 'Invoking: Arm Compiler'
+	"C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/utils" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/cc3100" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/cc3100/platform/ek-tm4c123gxl" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/simplelink/include" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/cc3100/simplelink/source" --define=ccs="ccs" --define=PART_TM4C123GH6PM -g --c99 --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="$(basename $(<F)).d_raw" $(GEN_OPTS__FLAG) "$<"
+	@echo 'Finished building: "$<"'
+	@echo ' '
+
+device.obj: C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/simplelink/source/device.c $(GEN_OPTS) | $(GEN_FILES) $(GEN_MISC_FILES)
+	@echo 'Building file: "$<"'
+	@echo 'Invoking: Arm Compiler'
+	"C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/utils" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/cc3100" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/cc3100/platform/ek-tm4c123gxl" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/simplelink/include" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/cc3100/simplelink/source" --define=ccs="ccs" --define=PART_TM4C123GH6PM -g --c99 --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="$(basename $(<F)).d_raw" $(GEN_OPTS__FLAG) "$<"
+	@echo 'Finished building: "$<"'
+	@echo ' '
+
+driver.obj: C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/simplelink/source/driver.c $(GEN_OPTS) | $(GEN_FILES) $(GEN_MISC_FILES)
+	@echo 'Building file: "$<"'
+	@echo 'Invoking: Arm Compiler'
+	"C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/utils" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/cc3100" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/cc3100/platform/ek-tm4c123gxl" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/simplelink/include" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/cc3100/simplelink/source" --define=ccs="ccs" --define=PART_TM4C123GH6PM -g --c99 --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="$(basename $(<F)).d_raw" $(GEN_OPTS__FLAG) "$<"
+	@echo 'Finished building: "$<"'
+	@echo ' '
+
+flowcont.obj: C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/simplelink/source/flowcont.c $(GEN_OPTS) | $(GEN_FILES) $(GEN_MISC_FILES)
+	@echo 'Building file: "$<"'
+	@echo 'Invoking: Arm Compiler'
+	"C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/utils" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/cc3100" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/cc3100/platform/ek-tm4c123gxl" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/simplelink/include" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/cc3100/simplelink/source" --define=ccs="ccs" --define=PART_TM4C123GH6PM -g --c99 --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="$(basename $(<F)).d_raw" $(GEN_OPTS__FLAG) "$<"
+	@echo 'Finished building: "$<"'
+	@echo ' '
+
+fs.obj: C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/simplelink/source/fs.c $(GEN_OPTS) | $(GEN_FILES) $(GEN_MISC_FILES)
+	@echo 'Building file: "$<"'
+	@echo 'Invoking: Arm Compiler'
+	"C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/utils" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/cc3100" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/cc3100/platform/ek-tm4c123gxl" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/simplelink/include" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/cc3100/simplelink/source" --define=ccs="ccs" --define=PART_TM4C123GH6PM -g --c99 --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="$(basename $(<F)).d_raw" $(GEN_OPTS__FLAG) "$<"
+	@echo 'Finished building: "$<"'
+	@echo ' '
+
+%.obj: ../%.c $(GEN_OPTS) | $(GEN_FILES) $(GEN_MISC_FILES)
+	@echo 'Building file: "$<"'
+	@echo 'Invoking: Arm Compiler'
+	"C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/utils" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/cc3100" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/cc3100/platform/ek-tm4c123gxl" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/simplelink/include" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/cc3100/simplelink/source" --define=ccs="ccs" --define=PART_TM4C123GH6PM -g --c99 --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="$(basename $(<F)).d_raw" $(GEN_OPTS__FLAG) "$<"
+	@echo 'Finished building: "$<"'
+	@echo ' '
+
+netapp.obj: C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/simplelink/source/netapp.c $(GEN_OPTS) | $(GEN_FILES) $(GEN_MISC_FILES)
+	@echo 'Building file: "$<"'
+	@echo 'Invoking: Arm Compiler'
+	"C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/utils" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/cc3100" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/cc3100/platform/ek-tm4c123gxl" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/simplelink/include" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/cc3100/simplelink/source" --define=ccs="ccs" --define=PART_TM4C123GH6PM -g --c99 --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="$(basename $(<F)).d_raw" $(GEN_OPTS__FLAG) "$<"
+	@echo 'Finished building: "$<"'
+	@echo ' '
+
+netcfg.obj: C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/simplelink/source/netcfg.c $(GEN_OPTS) | $(GEN_FILES) $(GEN_MISC_FILES)
+	@echo 'Building file: "$<"'
+	@echo 'Invoking: Arm Compiler'
+	"C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/utils" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/cc3100" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/cc3100/platform/ek-tm4c123gxl" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/simplelink/include" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/cc3100/simplelink/source" --define=ccs="ccs" --define=PART_TM4C123GH6PM -g --c99 --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="$(basename $(<F)).d_raw" $(GEN_OPTS__FLAG) "$<"
+	@echo 'Finished building: "$<"'
+	@echo ' '
+
+nonos.obj: C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/simplelink/source/nonos.c $(GEN_OPTS) | $(GEN_FILES) $(GEN_MISC_FILES)
+	@echo 'Building file: "$<"'
+	@echo 'Invoking: Arm Compiler'
+	"C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/utils" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/cc3100" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/cc3100/platform/ek-tm4c123gxl" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/simplelink/include" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/cc3100/simplelink/source" --define=ccs="ccs" --define=PART_TM4C123GH6PM -g --c99 --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="$(basename $(<F)).d_raw" $(GEN_OPTS__FLAG) "$<"
+	@echo 'Finished building: "$<"'
+	@echo ' '
+
+socket.obj: C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/simplelink/source/socket.c $(GEN_OPTS) | $(GEN_FILES) $(GEN_MISC_FILES)
+	@echo 'Building file: "$<"'
+	@echo 'Invoking: Arm Compiler'
+	"C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/utils" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/cc3100" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/cc3100/platform/ek-tm4c123gxl" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/simplelink/include" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/cc3100/simplelink/source" --define=ccs="ccs" --define=PART_TM4C123GH6PM -g --c99 --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="$(basename $(<F)).d_raw" $(GEN_OPTS__FLAG) "$<"
+	@echo 'Finished building: "$<"'
+	@echo ' '
+
+spawn.obj: C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/simplelink/source/spawn.c $(GEN_OPTS) | $(GEN_FILES) $(GEN_MISC_FILES)
+	@echo 'Building file: "$<"'
+	@echo 'Invoking: Arm Compiler'
+	"C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/utils" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/cc3100" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/cc3100/platform/ek-tm4c123gxl" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/simplelink/include" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/cc3100/simplelink/source" --define=ccs="ccs" --define=PART_TM4C123GH6PM -g --c99 --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="$(basename $(<F)).d_raw" $(GEN_OPTS__FLAG) "$<"
+	@echo 'Finished building: "$<"'
+	@echo ' '
+
+spi.obj: C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/platform/ek-tm4c123gxl/spi.c $(GEN_OPTS) | $(GEN_FILES) $(GEN_MISC_FILES)
+	@echo 'Building file: "$<"'
+	@echo 'Invoking: Arm Compiler'
+	"C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/utils" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/cc3100" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/cc3100/platform/ek-tm4c123gxl" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/simplelink/include" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/cc3100/simplelink/source" --define=ccs="ccs" --define=PART_TM4C123GH6PM -g --c99 --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="$(basename $(<F)).d_raw" $(GEN_OPTS__FLAG) "$<"
+	@echo 'Finished building: "$<"'
+	@echo ' '
+
+uart.obj: C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/platform/ek-tm4c123gxl/uart.c $(GEN_OPTS) | $(GEN_FILES) $(GEN_MISC_FILES)
+	@echo 'Building file: "$<"'
+	@echo 'Invoking: Arm Compiler'
+	"C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/utils" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/cc3100" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/cc3100/platform/ek-tm4c123gxl" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/simplelink/include" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/cc3100/simplelink/source" --define=ccs="ccs" --define=PART_TM4C123GH6PM -g --c99 --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="$(basename $(<F)).d_raw" $(GEN_OPTS__FLAG) "$<"
+	@echo 'Finished building: "$<"'
+	@echo ' '
+
+uartstdio.obj: C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/platform/ek-tm4c123gxl/uartstdio.c $(GEN_OPTS) | $(GEN_FILES) $(GEN_MISC_FILES)
+	@echo 'Building file: "$<"'
+	@echo 'Invoking: Arm Compiler'
+	"C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/utils" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/cc3100" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/cc3100/platform/ek-tm4c123gxl" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/simplelink/include" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/cc3100/simplelink/source" --define=ccs="ccs" --define=PART_TM4C123GH6PM -g --c99 --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="$(basename $(<F)).d_raw" $(GEN_OPTS__FLAG) "$<"
+	@echo 'Finished building: "$<"'
+	@echo ' '
+
+ustdlib.obj: C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/platform/ek-tm4c123gxl/ustdlib.c $(GEN_OPTS) | $(GEN_FILES) $(GEN_MISC_FILES)
+	@echo 'Building file: "$<"'
+	@echo 'Invoking: Arm Compiler'
+	"C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/utils" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/cc3100" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/cc3100/platform/ek-tm4c123gxl" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/simplelink/include" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/cc3100/simplelink/source" --define=ccs="ccs" --define=PART_TM4C123GH6PM -g --c99 --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="$(basename $(<F)).d_raw" $(GEN_OPTS__FLAG) "$<"
+	@echo 'Finished building: "$<"'
+	@echo ' '
+
+wlan.obj: C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/simplelink/source/wlan.c $(GEN_OPTS) | $(GEN_FILES) $(GEN_MISC_FILES)
+	@echo 'Building file: "$<"'
+	@echo 'Invoking: Arm Compiler'
+	"C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/utils" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/cc3100" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/cc3100/platform/ek-tm4c123gxl" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/CC3100/simplelink/include" --include_path="C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/cc3100/simplelink/source" --define=ccs="ccs" --define=PART_TM4C123GH6PM -g --c99 --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="$(basename $(<F)).d_raw" $(GEN_OPTS__FLAG) "$<"
+	@echo 'Finished building: "$<"'
+	@echo ' '
+
+

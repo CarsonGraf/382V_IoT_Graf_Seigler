@@ -1,0 +1,71 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+################################################################################
+
+SHELL = cmd.exe
+
+# Add inputs and outputs from these tool invocations to the build variables 
+CMD_SRCS += \
+../tm4c123gh6pm.cmd 
+
+C_SRCS += \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/ADCSWTrigger.c \
+../ADCTestMain.c \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/CortexM.c \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/LaunchPad.c \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/PLL.c \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/SysTickInts.c \
+C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/TExaS.c \
+../tm4c123gh6pm_startup_ccs.c 
+
+C_DEPS += \
+./ADCSWTrigger.d \
+./ADCTestMain.d \
+./CortexM.d \
+./LaunchPad.d \
+./PLL.d \
+./SysTickInts.d \
+./TExaS.d \
+./tm4c123gh6pm_startup_ccs.d 
+
+OBJS += \
+./ADCSWTrigger.obj \
+./ADCTestMain.obj \
+./CortexM.obj \
+./LaunchPad.obj \
+./PLL.obj \
+./SysTickInts.obj \
+./TExaS.obj \
+./tm4c123gh6pm_startup_ccs.obj 
+
+OBJS__QUOTED += \
+"ADCSWTrigger.obj" \
+"ADCTestMain.obj" \
+"CortexM.obj" \
+"LaunchPad.obj" \
+"PLL.obj" \
+"SysTickInts.obj" \
+"TExaS.obj" \
+"tm4c123gh6pm_startup_ccs.obj" 
+
+C_DEPS__QUOTED += \
+"ADCSWTrigger.d" \
+"ADCTestMain.d" \
+"CortexM.d" \
+"LaunchPad.d" \
+"PLL.d" \
+"SysTickInts.d" \
+"TExaS.d" \
+"tm4c123gh6pm_startup_ccs.d" 
+
+C_SRCS__QUOTED += \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/ADCSWTrigger.c" \
+"../ADCTestMain.c" \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/CortexM.c" \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/LaunchPad.c" \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/PLL.c" \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/SysTickInts.c" \
+"C:/Users/cgraf/Documents/School/Fall_2023/IoT/TM4C123/inc/TExaS.c" \
+"../tm4c123gh6pm_startup_ccs.c" 
+
+
