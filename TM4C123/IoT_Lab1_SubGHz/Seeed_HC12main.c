@@ -368,3 +368,87 @@ void LED_Init(void){
 void LED_Output(uint32_t data){
     GPIO_PORTA_DATA_R = (GPIO_PORTA_DATA_R&~0x1C)|((data<<2)&0x1C); // PE3-PE0
 }
+
+// our divisor is b1 1001 0011 because that's what I randomly picked lol
+uint8_t crc_divisor_high = 0xc9;
+uint8_t crc_divisor_bottom = 0x01;
+
+/**
+ * Generates an 8-bit CRC code for the given message using the divisor 0x193
+ * Parameters:
+ *      message: pointer to the message to generate a CRC for
+ *      length: number of bytes in the message
+ *
+ * Returns:
+ *      8-bit CRC of type uint_8
+ */
+uint8_t CRCGen(uint8_t* message, uint32_t length) {
+
+    uint8_t remainder[length + 1];
+
+    // for local copy of message so we can divide it without changing the original message
+    for (int i = 0; i < length; i++)
+        remainder[i] = message[i];
+
+    remainder[length] = 0x00;
+
+    uint32_t byte_idx = 0;
+    while (byte_idx < length) { // we're done once we have all zeroes starting at bit 8 (bit 0 of the second to last byte)
+        if (remainder[byte_idx] == 0) {
+            byte_idx++;
+            continue;
+        }
+        uint8_t shift = 0;
+        while (!(remainder[byte_idx] & 0x80)) {
+            remainder[byte_idx] = remainder[byte_idx] << 1;
+            shift++;
+        }
+        remainder[byte_idx] = remainder[byte_idx] ^ crc_divisor_high;
+        remainder[byte_idx] = remainder[byte_idx] >> shift;
+        uint8_t xor_mask = crc_divisor_high << (8-shift);
+        xor_mask = xor_mask + (crc_divisor_bottom << (7-shift));
+        remainder[byte_idx + 1] = remainder[byte_idx + 1] ^ xor_mask;
+    }
+    return (remainder[length]);
+
+}
+
+/**
+ * Checks if a message matches its CRC using the divisor 0x193
+ * Parameters:
+ *      message: pointer to the message whose CRC will be checked
+ *      length: number of bytes in the message
+ *
+ * Returns:
+ *      1 if the CRC matches the message and 0 otherwise
+ *
+ * IMPORTANT USAGE NOTE: make sure the message's CRC is included as the last byte of message, and
+ *      that length counts the CRC byte
+ */
+uint8_t CRCCheck(uint8_t* message, uint32_t length) {
+
+    uint8_t remainder[length];
+
+    // for local copy of message so we can divide it without changing the original message
+    for (int i = 0; i < length; i++)
+        remainder[i] = message[i];
+
+    uint32_t byte_idx = 0;
+    while (byte_idx < (length - 1)) { // we're done once we have all zeroes starting at bit 8 (bit 0 of the second to last byte)
+        if (remainder[byte_idx] == 0) {
+            byte_idx++;
+            continue;
+        }
+        uint8_t shift = 0;
+        while (!(remainder[byte_idx] & 0x80)) {
+            remainder[byte_idx] = remainder[byte_idx] << 1;
+            shift++;
+        }
+        remainder[byte_idx] = remainder[byte_idx] ^ crc_divisor_high;
+        remainder[byte_idx] = remainder[byte_idx] >> shift;
+        uint8_t xor_mask = crc_divisor_high << (8-shift);
+        xor_mask = xor_mask + (crc_divisor_bottom << (7-shift));
+        remainder[byte_idx + 1] = remainder[byte_idx + 1] ^ xor_mask;
+    }
+    return remainder[length - 1] == 0 ? 1 : 0;
+}
