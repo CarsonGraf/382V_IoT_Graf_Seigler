@@ -34,6 +34,7 @@ typedef struct network_data_proto
     uint8_t size;
     uint8_t id;
     bool initialized;
+    bool acked;
     uint8_t cur_slot;
     uint16_t slot_stamp;
 }network_data_t;

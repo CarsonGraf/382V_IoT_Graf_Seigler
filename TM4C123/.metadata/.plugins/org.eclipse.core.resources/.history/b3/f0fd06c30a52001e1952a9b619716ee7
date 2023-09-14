@@ -1,0 +1,71 @@
+/*
+ * protocol.h
+ *
+ *  Created on: Sep 9, 2023
+ *      Author: cgraf
+ */
+
+#ifndef PROTOCOL_H_
+#define PROTOCOL_H_
+
+#define filter      0xF0
+#define net_size    6
+#define max_msg     32
+#define max_packet  200
+
+typedef enum echo_state_proto
+{
+    no_action,
+    ack,
+    tb_echoed,
+    tb_ack,
+}echo_state_t;
+
+typedef struct node_data_proto
+{
+    uint8_t num;
+    echo_state_t state;
+    uint8_t dest;
+    uint8_t data[max_msg+6];
+    uint8_t len;
+}node_data_t;
+
+typedef struct network_data_proto
+{
+    uint8_t size;
+    uint8_t id;
+    bool initialized;
+    bool ack;
+    uint8_t cur_slot;
+    uint16_t slot_stamp;
+}network_data_t;
+
+typedef enum stream_state
+{
+    garbage,
+    fil1,
+    fil2,
+    fil3,
+    get_len,
+    listening,
+    ready,
+}stream_state_t;
+
+typedef struct stream_proto
+{
+    uint8_t data[256];
+    stream_state_t state;
+    uint8_t len;
+    uint8_t cur_len;
+}stream_t;
+
+
+
+void parse_init(stream_t* stream, network_data_t* net_table);
+int parse_stream(stream_t* stream, node_data_t* node_table, network_data_t* net_table, int* new_src);
+int check_stream(stream_t* stream);
+int update_rx_stream(stream_t* stream);
+void send_updates(network_data_t * net_table, node_data_t * node_table);
+void send_message(network_data_t * net_table, node_data_t * node_table, uint8_t * data, uint8_t len, uint8_t dest);
+
+#endif /* PROTOCOL_H_ */

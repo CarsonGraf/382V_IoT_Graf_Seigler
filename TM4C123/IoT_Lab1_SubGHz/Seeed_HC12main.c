@@ -120,6 +120,8 @@ void SysTick_Handler(void){
               SSD1306_SetCursor(0, 0);
               SSD1306_OutString("Initialized");
               SSD1306_OutUDec(net_table.id);
+              SSD1306_SetCursor(0, 3);
+              SSD1306_OutUDec(net_table.size);
           }
           else
           {
@@ -145,11 +147,13 @@ void SysTick_Handler(void){
       net_table.cur_slot = 0;
       net_table.id = 0;
       net_table.initialized = 1;
-      net_table.size = 0;
+      net_table.size = 1;
       Time = 0;
       SSD1306_SetCursor(0, 0);
       SSD1306_OutString("Initialized ");
       SSD1306_OutUDec(net_table.id);
+      SSD1306_SetCursor(0, 3);
+      SSD1306_OutUDec(net_table.size);
       //net_table.slot_stamp
   }
 
@@ -240,33 +244,18 @@ void main(void){
     EnableInterrupts();
     HC12_Init();
     while(1)
-    {}
-    while(1)
     {
-        char input[max_msg+6];
-        int dest = 0;
-        printf("Enter an Address: \n");
-        memset(input, 0, sizeof(input));
-        if(scanf("%i",&dest) != 1)
-        {
-            printf("\nincorrect format\n");
-            goto END;
-        }
-        if(dest > 5)
-        {
-            printf("\ntoo big %i\n",dest);
-            goto END;
-        }
-        printf("\n");
-        printf("Enter your message\n");
-        if(scanf("%30s", input) != 1)
-        {
-            printf("\nbad string\n");
-            goto END;
-        }
-        printf("\n%s\n",input);
-        END :
-
+        UART_OutString("\n\rEnter addy: \n\r");
+        int addy = UART_InUDec();
+        UART_OutString("\n\rEnter message: \n\r");
+        uint8_t string[32] = {0};
+        UART_InString(string, 32);
+        int len = strlen(string);
+        send_message(&net_table, node_table, string, len, addy);
+        while(net_table.acked == 0)
+        {}
+        net_table.acked = 0;
+        UART_OutString("\n\rACK!\n\r");
     }
 }
 
@@ -370,8 +359,8 @@ void LED_Output(uint32_t data){
 }
 
 // our divisor is b1 1001 0011 because that's what I randomly picked lol
-uint8_t crc_divisor_high = 0xc9;
-uint8_t crc_divisor_bottom = 0x01;
+//uint8_t crc_divisor_high = 0xc9;
+//uint8_t crc_divisor_bottom = 0x01;
 
 /**
  * Generates an 8-bit CRC code for the given message using the divisor 0x193
@@ -382,6 +371,8 @@ uint8_t crc_divisor_bottom = 0x01;
  * Returns:
  *      8-bit CRC of type uint_8
  */
+
+/*
 uint8_t CRCGen(uint8_t* message, uint32_t length) {
 
     uint8_t remainder[length + 1];
@@ -412,6 +403,7 @@ uint8_t CRCGen(uint8_t* message, uint32_t length) {
     return (remainder[length]);
 
 }
+*/
 
 /**
  * Checks if a message matches its CRC using the divisor 0x193
@@ -425,6 +417,8 @@ uint8_t CRCGen(uint8_t* message, uint32_t length) {
  * IMPORTANT USAGE NOTE: make sure the message's CRC is included as the last byte of message, and
  *      that length counts the CRC byte
  */
+
+/*
 uint8_t CRCCheck(uint8_t* message, uint32_t length) {
 
     uint8_t remainder[length];
@@ -452,3 +446,4 @@ uint8_t CRCCheck(uint8_t* message, uint32_t length) {
     }
     return remainder[length - 1] == 0 ? 1 : 0;
 }
+*/

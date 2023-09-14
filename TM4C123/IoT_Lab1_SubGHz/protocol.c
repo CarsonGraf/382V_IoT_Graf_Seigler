@@ -10,6 +10,9 @@
 #include "protocol.h"
 #include "../inc/UART1int.h"
 
+uint8_t CRCCheck(uint8_t* message, uint32_t length);
+uint8_t CRCGen(uint8_t* message, uint32_t length);
+
 int update_rx_stream(stream_t* stream)
 {
     uint8_t in = 0;
@@ -64,7 +67,11 @@ int check_stream(stream_t* stream)
     if(stream->state != ready)
     {
         return 1;
-    }
+    }/*
+    if(!CRCCheck(stream->data, stream->len))
+    {
+        return 0;
+    }*/
     return 0;
 }
 
@@ -79,7 +86,7 @@ void parse_init(stream_t* stream, network_data_t* net_table)
 {
     if(!net_table->initialized && ((stream->data[0] + 1)<net_size))
     {
-        net_table->id = stream->data[0] + 1;
+        net_table->id = stream->data[0];
         net_table->size = stream->data[0] + 1;
         net_table->cur_slot = stream->data[1];
         net_table->initialized = true;
@@ -98,7 +105,7 @@ int parse_stream(stream_t* stream, node_data_t* node_table, network_data_t* net_
 
     int state = type;
 
-    for(int i = 2; i < stream->len; i++)
+    for(int i = 2; i < stream->len-1; i++)
     {
         switch(state)
         {
@@ -112,10 +119,17 @@ int parse_stream(stream_t* stream, node_data_t* node_table, network_data_t* net_
             {
                 int src = stream->data[i];
                 int num = stream->data[++i];
-                if(node_table[src].num != num)
+                if(src != net_table->id)
                 {
-                    node_table[src].num = num;
-                    node_table[src].state = tb_ack;
+                    if(node_table[src].num != num)
+                    {
+                        node_table[src].num = num;
+                        node_table[src].state = tb_ack;
+                    }
+                }
+                else
+                {
+                    net_table->acked = 1;
                 }
                 state = type;
                 break;
@@ -147,6 +161,7 @@ int parse_stream(stream_t* stream, node_data_t* node_table, network_data_t* net_
                     {
                         node_table[src].data[j] = stream->data[++i];
                     }
+                    node_table[src].data[len] = 0;
                     state = type;
                 }
                 break;
@@ -163,7 +178,7 @@ void send_updates(network_data_t * net_table, node_data_t * node_table)
     UART1_OutChar(filter);
     UART1_OutChar(filter);
     int i = 0;
-    int sum = 4;
+    int sum = 2;
     int len = sum;
     for(i = 0; i<net_size; i++)
     {
@@ -187,32 +202,43 @@ void send_updates(network_data_t * net_table, node_data_t * node_table)
             len = sum;
         }
     }
-    UART1_OutChar(len);
+    UART1_OutChar(len+1);
     UART1_OutChar(net_table->size);
     UART1_OutChar(net_table->id);
+
+    uint8_t buffer[256] = {0};
+    buffer[0] = net_table->size;
+    buffer[1] = net_table->id;
+    int bidx = 2;
     for(int j = 0; j<i; j++)
     {
         if(node_table[j].state == tb_ack)
         {
-            UART1_OutChar(0);
-            UART1_OutChar(j);
-            UART1_OutChar(node_table[j].num);//type, num, state
+            buffer[bidx++] = 0;
+            buffer[bidx++] = j;
+            buffer[bidx++] = node_table[j].num; //type, num, state
             node_table[j].state = no_action;
         }
         else if(node_table[j].state == tb_echoed)
         {
-            UART1_OutChar(1);
-            UART1_OutChar(j);
-            UART1_OutChar(node_table[j].dest);
-            UART1_OutChar(node_table[j].num);
-            UART1_OutChar(node_table[j].len);
+            buffer[bidx++] = 1;
+            buffer[bidx++] = j;
+            buffer[bidx++] = node_table[j].dest;
+            buffer[bidx++] = node_table[j].num;
+            buffer[bidx++] = node_table[j].len;
             for(int k = 0; k < node_table[j].len; k++)
             {
-                UART1_OutChar(node_table[j].data[k]);
+                buffer[bidx++] = node_table[j].data[k];
             }
             node_table[j].state = no_action;
         }
     }
+    uint8_t crc = 0;//CRCGen(buffer, len);
+    for(int j = 0; j<len; j++)
+    {
+        UART1_OutChar(buffer[j]);
+    }
+    UART1_OutChar(crc);
 }
 
 void send_message(network_data_t * net_table, node_data_t * node_table, uint8_t * data, uint8_t len, uint8_t dest)
@@ -227,3 +253,92 @@ void send_message(network_data_t * net_table, node_data_t * node_table, uint8_t 
     node_table[id].num++;
     node_table[id].state = tb_echoed;
 }
+
+/**
+ * Checks if a message matches its CRC using the divisor 0x193
+ * Parameters:
+ *      message: pointer to the message whose CRC will be checked
+ *      length: number of bytes in the message
+ *
+ * Returns:
+ *      1 if the CRC matches the message and 0 otherwise
+ *
+ * IMPORTANT USAGE NOTE: make sure the message's CRC is included as the last byte of message, and
+ *      that length counts the CRC byte
+ */
+uint8_t crc_divisor_high = 0xc9;
+uint8_t crc_divisor_bottom = 0x01;
+
+uint8_t CRCCheck(uint8_t* message, uint32_t length) {
+
+    uint8_t remainder[256/*length*/];
+
+    // for local copy of message so we can divide it without changing the original message
+    for (int i = 0; i < length; i++)
+        remainder[i] = message[i];
+
+    uint32_t byte_idx = 0;
+    while (byte_idx < (length - 1)) { // we're done once we have all zeroes starting at bit 8 (bit 0 of the second to last byte)
+        if (remainder[byte_idx] == 0) {
+            byte_idx++;
+            continue;
+        }
+        uint8_t shift = 0;
+        while (!(remainder[byte_idx] & 0x80)) {
+            remainder[byte_idx] = remainder[byte_idx] << 1;
+            shift++;
+        }
+        remainder[byte_idx] = remainder[byte_idx] ^ crc_divisor_high;
+        remainder[byte_idx] = remainder[byte_idx] >> shift;
+        uint8_t xor_mask = crc_divisor_high << (8-shift);
+        xor_mask = xor_mask + (crc_divisor_bottom << (7-shift));
+        remainder[byte_idx + 1] = remainder[byte_idx + 1] ^ xor_mask;
+    }
+    return remainder[length - 1] == 0 ? 1 : 0;
+}
+
+// our divisor is b1 1001 0011 because that's what I randomly picked lol
+//uint8_t crc_divisor_high = 0xc9;
+//uint8_t crc_divisor_bottom = 0x01;
+
+/**
+ * Generates an 8-bit CRC code for the given message using the divisor 0x193
+ * Parameters:
+ *      message: pointer to the message to generate a CRC for
+ *      length: number of bytes in the message
+ *
+ * Returns:
+ *      8-bit CRC of type uint_8
+ */
+
+uint8_t CRCGen(uint8_t* message, uint32_t length) {
+
+    uint8_t remainder[256/*length + 1*/];
+
+    // for local copy of message so we can divide it without changing the original message
+    for (int i = 0; i < length; i++)
+        remainder[i] = message[i];
+
+    remainder[length] = 0x00;
+
+    uint32_t byte_idx = 0;
+    while (byte_idx < length) { // we're done once we have all zeroes starting at bit 8 (bit 0 of the second to last byte)
+        if (remainder[byte_idx] == 0) {
+            byte_idx++;
+            continue;
+        }
+        uint8_t shift = 0;
+        while (!(remainder[byte_idx] & 0x80)) {
+            remainder[byte_idx] = remainder[byte_idx] << 1;
+            shift++;
+        }
+        remainder[byte_idx] = remainder[byte_idx] ^ crc_divisor_high;
+        remainder[byte_idx] = remainder[byte_idx] >> shift;
+        uint8_t xor_mask = crc_divisor_high << (8-shift);
+        xor_mask = xor_mask + (crc_divisor_bottom << (7-shift));
+        remainder[byte_idx + 1] = remainder[byte_idx + 1] ^ xor_mask;
+    }
+    return (remainder[length]);
+
+}
+
