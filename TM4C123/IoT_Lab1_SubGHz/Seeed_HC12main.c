@@ -105,6 +105,8 @@ node_data_t node_table[net_size] = {0};
 network_data_t net_table = {0};
 stream_t stream = {0};
 
+uint32_t cycles = 0;
+
 void SysTick_Handler(void){
   PF3 ^= 0x08;       // toggle PF3
   PF3 ^= 0x08;       // toggle PF3
@@ -130,7 +132,10 @@ void SysTick_Handler(void){
               if(parse_stream(&stream, node_table, &net_table, &src))
               {
                   SSD1306_SetCursor(0, 5);
+                  SSD1306_OutString("                      ");
+                  SSD1306_SetCursor(0, 5);
                   SSD1306_OutString(node_table[src].data);
+                  SSD1306_OutChar(' ');
               }
 
               if(num_mem != net_table.size)
@@ -138,9 +143,13 @@ void SysTick_Handler(void){
                   SSD1306_SetCursor(0, 3);
                   SSD1306_OutUDec(net_table.size);
               }
+
+
           }
       }
+      stream.len = 0;
       stream.state = garbage;
+      stream.cur_len = 0;
   }
   if(Switch_Input() && !net_table.initialized)
   {
@@ -166,6 +175,7 @@ void SysTick_Handler(void){
           net_table.cur_slot = (net_table.cur_slot + 1) % net_size;
           if(net_table.cur_slot == net_table.id)
           {
+              cycles++;
               send_updates(&net_table, node_table);
           }
       }
@@ -252,10 +262,19 @@ void main(void){
         UART_InString(string, 32);
         int len = strlen(string);
         send_message(&net_table, node_table, string, len, addy);
+        int cur_cycles = cycles;
         while(net_table.acked == 0)
-        {}
+        {
+            if(cur_cycles != cycles)
+            {
+                send_message(&net_table, node_table, string, len, addy);
+                cur_cycles = cycles;
+            }
+
+        }
         net_table.acked = 0;
         UART_OutString("\n\rACK!\n\r");
+
     }
 }
 

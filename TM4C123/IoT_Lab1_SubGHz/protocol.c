@@ -44,7 +44,7 @@ int update_rx_stream(stream_t* stream)
             case listening :
                 stream->data[stream->cur_len] = in;
                 stream->cur_len++;
-                if(stream->cur_len == stream->len)
+                if(stream->cur_len+1 >= stream->len)
                 {
                     stream->state = ready;
                     return 1;
@@ -60,7 +60,7 @@ int update_rx_stream(stream_t* stream)
 
 int check_stream(stream_t* stream)
 {
-    if(stream->len<3)
+    if(stream->len<2)
     {
         return 1;
     }
@@ -147,15 +147,24 @@ int parse_stream(stream_t* stream, node_data_t* node_table, network_data_t* net_
                 }
                 else
                 {
-                    node_table[src].dest = dest;
-                    node_table[src].num = num;
-                    node_table[src].state = tb_echoed;
-                    node_table[src].len = len;
+                    for(int i = 0; i < max_msg+2; i++)
+                    {
+                        node_table[src].data[i] = 0;
+                    }
                     if(dest == net_table->id)
                     {
                         *new_src = src;
                         new_msg = 1;
+
+                        node_table[src].state = tb_ack;
                     }
+                    else
+                    {
+                        node_table[src].state = tb_echoed;
+                    }
+                    node_table[src].dest = dest;
+                    node_table[src].num = num;
+                    node_table[src].len = len;
 
                     for(int j = 0; j < len; j++)
                     {
@@ -202,9 +211,7 @@ void send_updates(network_data_t * net_table, node_data_t * node_table)
             len = sum;
         }
     }
-    UART1_OutChar(len+1);
-    UART1_OutChar(net_table->size);
-    UART1_OutChar(net_table->id);
+    UART1_OutChar(len);
 
     uint8_t buffer[256] = {0};
     buffer[0] = net_table->size;
@@ -244,12 +251,15 @@ void send_updates(network_data_t * net_table, node_data_t * node_table)
 void send_message(network_data_t * net_table, node_data_t * node_table, uint8_t * data, uint8_t len, uint8_t dest)
 {
     int id = net_table->id;
-    for(int i = 0; i < len && i<max_msg; i++)
+    int i = 0;
+    for(i = 0; i < len && i<(max_msg-1); i++)
     {
         node_table[id].data[i] = data[i];
     }
+    node_table[id].data[i] = 0;
+
     node_table[id].dest = dest;
-    node_table[id].len = len;
+    node_table[id].len = len+1;
     node_table[id].num++;
     node_table[id].state = tb_echoed;
 }
