@@ -55,6 +55,7 @@ policies, either expressed or implied, of the FreeBSD Project.
 #define MAX_PIXELS 118 // 128x128 screen minus 5 pixel border
 
 #include <stdint.h>
+#include <stdlib.h>
 #include <stdio.h>
 #include "msp.h"
 #include "..\inc\CortexM.h"
@@ -88,7 +89,7 @@ void SysTick_Handler(void){
 
 void LS20031_Init(uint32_t baud){
   UART1_InitB(baud);    // serial port to LS20031
- // printf("\nLS20031 initialization done");
+ printf("\nLS20031 initialization done");
 }
 
 /**
@@ -202,12 +203,12 @@ void changeMinLat(point* ptr) {
     }
 }
 void setMaxMinLat(point* ptr) {
-    maxLat = ptr->latitude + 0.5;
-    minLat = ptr->latitude - 0.5;
+    maxLat = ptr->latitude + 0.1;
+    minLat = ptr->latitude - 0.4;
 }
 void setMaxMinLong(point* ptr) {
-    maxLong = ptr->longitude + 0.5;
-    minLong = ptr->longitude - 0.5;
+    maxLong = ptr->longitude + 0.1;
+    minLong = ptr->longitude - 0.4;
 }
 
 // private internal variables that keep track of LCD parameters
@@ -333,8 +334,12 @@ void main(void){
   lcdcolor(DATACOLOR);
   */
   point* currPoint;
-  point tempPoint;
-  point* pointList[255];
+  point* tempPoint = (point*) malloc(sizeof(point));
+  point** pointList;
+  pointList = (point**) malloc(sizeof(point*) * 255);
+  for (int j = 0; j < 255; j++) {
+      pointList[j] = (point*) malloc(sizeof(point));
+  }
   uint8_t pointListIdx = 0;
   uint8_t packetCounter = 0;
   //int m = 0;
@@ -367,9 +372,10 @@ void main(void){
           if (packetCounter == 30) {
               currPoint = pointList[pointListIdx];
               pointListIdx++;
+              //outudec(pointListIdx);
               packetCounter = 0;
           } else {
-              currPoint = &tempPoint;
+              currPoint = tempPoint;
           }
         // this packet contains GPS location data
         i = 0;
@@ -607,6 +613,7 @@ void main2(void){
       }
       if(packetstate == VALID){
         if((packet[2] == 'G') && (packet[3] == 'G') && packet[4] == 'A'){
+            printf("data packet\n");
           // this packet contains GPS location data
           i = 0;
           while(packet[i] != ','){
