@@ -50,6 +50,10 @@ policies, either expressed or implied, of the FreeBSD Project.
 // 2 GND
 // 1 GND
 
+#define TRUE 1
+#define FALSE 0
+#define MAX_PIXELS 118 // 128x128 screen minus 5 pixel border
+
 #include <stdint.h>
 #include <stdio.h>
 #include "msp.h"
@@ -84,7 +88,7 @@ void SysTick_Handler(void){
 
 void LS20031_Init(uint32_t baud){
   UART1_InitB(baud);    // serial port to LS20031
-  printf("\nLS20031 initialization done");
+ // printf("\nLS20031 initialization done");
 }
 
 /**
@@ -95,6 +99,116 @@ enum PacketState{
   VALID,
   INCOMING
 };
+
+
+int updateMaxLat = FALSE;
+int updateMinLat = FALSE;
+float maxLat;
+float minLat;
+int updateMaxLong = FALSE;
+int updateMinLong = FALSE;
+float maxLong;
+float minLong;
+
+typedef struct point{
+    uint8_t isNorth; // true or false
+    float latitude;
+    uint16_t y;
+    uint8_t isEast; // true or false
+    float longitude;
+    uint16_t x;
+} point;
+
+int getY(point* point) {
+    if (point->latitude == '\0') {
+        return FALSE;
+    }
+    if (point->latitude > maxLat) {
+        updateMaxLat = TRUE;
+        return FALSE;
+    }
+    if (point->latitude < minLat) {
+        updateMinLat = TRUE;
+        return FALSE;
+    }
+    float latRange = maxLat - minLat;
+    float latPerPixel = latRange/MAX_PIXELS;
+    float yInRange = point->latitude - minLat;
+    point->y = (uint16_t) (yInRange/latPerPixel); // y in number of pixels from bottom
+
+    return TRUE;
+}
+
+int getX(point* point) {
+    if (point->longitude == '\0') {
+        return FALSE;
+    }
+    if (point->longitude > maxLong) {
+        updateMaxLong = TRUE;
+        return FALSE;
+    }
+    if (point->longitude < minLong) {
+        updateMinLong = TRUE;
+        return FALSE;
+    }
+    float longRange = maxLong - minLong;
+    float longPerPixel = longRange/MAX_PIXELS;
+    float xInRange = point->longitude - minLong;
+    point->x = (uint16_t)(xInRange/longPerPixel); // x in number of pixels from right
+
+    return TRUE;
+}
+
+int charsToFloat(uint8_t* ptr, int lat, float* toReturn) {
+    float minutes = 0;
+    if (lat) {
+        if (ptr[4] != '.') {
+            return FALSE;
+        }
+        *toReturn = 60*(10*((int)ptr[0] - 48) + ((int)ptr[1] - 48)); // get degrees to minutes
+        minutes = 10*((int)ptr[2] - 48) + ((int)ptr[3] - 48) + 0.1*((int)ptr[5] - 48) + 0.01*((int)ptr[6] - 48)
+                    + 0.001*((int)ptr[7] - 48) + 0.0001*((int)ptr[8] - 48);
+        *toReturn = *toReturn + minutes;
+    } else {
+        if (ptr[5] != '.') {
+            return FALSE;
+        }
+        *toReturn = 60*(100*((int)ptr[0] - 48) + 10*((int)ptr[1] - 48) + ((int)ptr[2] - 48)); // get degrees to minutes
+        minutes = 10*((int)ptr[3] - 48) + ((int)ptr[4] - 48) + 0.1*((int)ptr[6] - 48) + 0.01*((int)ptr[7] - 48)
+                    + 0.001*((int)ptr[8] - 48) + 0.0001*((int)ptr[9] - 48);
+        *toReturn = *toReturn + minutes;
+    }
+    return TRUE;
+}
+
+void changeMaxLong(point* ptr) {
+    if(maxLong < ptr->longitude) {
+        maxLong = ptr->longitude + 0.5;
+    }
+}
+void changeMaxLat(point* ptr) {
+    if(maxLat < ptr->latitude) {
+        maxLat = ptr->latitude + 0.5;
+    }
+}
+void changeMinLong(point* ptr) {
+    if(minLong > ptr->longitude) {
+        minLong = ptr->longitude - 0.5;
+    }
+}
+void changeMinLat(point* ptr) {
+    if(minLat > ptr->latitude) {
+        minLat = ptr->latitude - 0.5;
+    }
+}
+void setMaxMinLat(point* ptr) {
+    maxLat = ptr->latitude + 0.5;
+    minLat = ptr->latitude - 0.5;
+}
+void setMaxMinLong(point* ptr) {
+    maxLong = ptr->longitude + 0.5;
+    minLong = ptr->longitude - 0.5;
+}
 
 // private internal variables that keep track of LCD parameters
 static uint32_t CursorX = 0;// X-position of the cursor (0<=CursorX<=20)
@@ -153,7 +267,208 @@ void lcdwrap(void){
 void lcdcolor(uint16_t newColor){
   TextColor = newColor;
 }
+
+//BSP_LCD_FillRect(int16_t x, int16_t y, int16_t w, int16_t h, uint16_t color)
+void drawPoint(point* point) {
+    int16_t width = 6;
+    int16_t left = MAX_PIXELS - point->x + 5 - 3; // +5 for border, -3 for 1/2width of square
+    if (left < 5) {
+        left = 5;
+        width = width - (5 - left);
+    }
+    if (left > MAX_PIXELS + 5 - 6) {
+        width = width - (left - (MAX_PIXELS + 5 - 6));
+    }
+
+    int16_t height = 6;
+    int16_t top = MAX_PIXELS - point->y + 5 - 3;
+    if (top < 5) {
+        top = 5;
+        height = height - (5 - top);
+    }
+    if (top > MAX_PIXELS + 5 - 6) {
+        height = height - (top- (MAX_PIXELS + 5 - 6));
+    }
+    BSP_LCD_FillRect(left, top, width, height, LCD_MAGENTA);
+}
+
+
 void main(void){
+  uint8_t in;
+  uint8_t packet[255];      // the maximum length of each packet is restricted to 255 bytes
+  int packetindex = 0;      // pointer to next free position in 'packet'
+  int i;
+  uint32_t seconds;
+  enum PacketState packetstate = INVALID;
+  Clock_Init48MHz();        // running on crystal
+  BSP_LCD_Init();
+  Time = MainCount = 0;
+//  SysTick_Init(480000,2);   // set up SysTick for 100 Hz interrupts
+  LaunchPad_Init();         // P1.0 is red LED on LaunchPad
+  UART0_Initprintf();       // serial port to PC for debugging
+  EnableInterrupts();
+  LS20031_Init(UART1_BAUD_57600);
+/*
+// original code, this does something
+  printf("\nLS20031 example\n");
+  while(1){
+    in = UART1_InCharNonBlock();
+    if(in){
+      UART0_OutChar(in);
+      MainCount++;
+      LEDOUT ^= 0x01;       // toggle P1.0
+    }
+  }
+// end of original code
+*/
+// my new code
+  /*
+  lcdcolor(LCD_CYAN);
+  outchar('\r');
+  outchar('\n');
+  outchar('\r');
+  outchar('\n');
+  lcdwrap();
+  outstring("LS20031 example");
+  lcdcolor(DATACOLOR);
+  */
+  point* currPoint;
+  point tempPoint;
+  point* pointList[255];
+  uint8_t pointListIdx = 0;
+  uint8_t packetCounter = 0;
+  //int m = 0;
+  //int n = 0;
+  while(1){
+    in = UART1_InCharNonBlock();
+    if(in){
+      // got a character
+      if(in == '$'){
+        // start/restart building a packet
+        packetindex = 0;
+        packetstate = INCOMING;
+      }else if((packetstate == INCOMING) && ((in == '\r') || (in == '\n'))){
+        // packets are terminated by a <CR><LF>
+        // checksum is in 'packetindex - 2' and 'packetindex - 1'
+        packet[packetindex] = 0;
+        packetstate = VALID;
+      }else if((packetstate == INCOMING) && (packetindex < 255)){
+        // add the character to the packet
+        packet[packetindex] = in;
+        packetindex = packetindex + 1;
+        if(packetindex >= 255){
+          packetstate = INVALID;
+        }
+      }
+    }
+    if(packetstate == VALID){
+      if((packet[2] == 'G') && (packet[3] == 'G') && packet[4] == 'A'){
+          packetCounter++;
+          if (packetCounter == 30) {
+              currPoint = pointList[pointListIdx];
+              pointListIdx++;
+              packetCounter = 0;
+          } else {
+              currPoint = &tempPoint;
+          }
+        // this packet contains GPS location data
+        i = 0;
+        while(packet[i] != ','){
+          i = i + 1;
+        }
+        i = i + 1;
+        /*
+        lcdcolor(HEADCOLOR);
+        outchar('\r');
+        outchar('\n');
+        outstring("Time=");
+        lcdcolor(DATACOLOR);
+        outchar(packet[i]);
+        outchar(packet[i+1]);
+        outchar(':');
+        outchar(packet[i+2]);
+        outchar(packet[i+3]);
+        outchar(':');
+        outchar(packet[i+4]);
+        outchar(packet[i+5]);
+        outchar('.'); // this character is actually sent in position 6, skip it
+        outchar(packet[i+7]);
+        outchar(packet[i+8]);
+        outchar(packet[i+9]);
+        */
+        while(packet[i] != ','){
+          i = i + 1;
+        }
+        i = i + 1;
+        if (!charsToFloat((packet + i), TRUE, &(currPoint->latitude)))
+            continue;
+        if (maxLat == '\0') {
+            setMaxMinLat(currPoint);
+        }
+        if (!getY(currPoint)) {
+            if (updateMaxLat)
+                changeMaxLat(currPoint);
+            else if (updateMinLat)
+                changeMinLat(currPoint);
+            else continue;
+            if (packetCounter == 0) { // not sure if we want to resize everything only on rewrite or what
+                for (int j = 0; j < pointListIdx; j++) {
+                    getY(pointList[j]);
+                }
+            }
+        }
+
+        while(packet[i] != ','){
+          i = i + 1;
+        }
+        i = i + 1;
+        currPoint->isNorth = (packet[i] == 'N');
+        i = i + 2;
+        if (!charsToFloat((packet + i), FALSE, &(currPoint->longitude)))
+            continue;
+        if (maxLong == '\0') {
+            setMaxMinLong(currPoint);
+        }
+        if (!getX(currPoint)) {
+            if (updateMaxLong)
+                changeMaxLong(currPoint);
+            else if (updateMinLong)
+                changeMinLong(currPoint);
+            else continue;
+            if (packetCounter == 0) {
+                for (int j = 0; j < pointListIdx; j++) {
+                    getX(pointList[j]);
+                }
+            }
+        }
+
+        while(packet[i] != ','){
+          i = i + 1;
+        }
+        i = i + 1;
+        currPoint->isEast = (packet[i] == 'E');
+
+        /* test if you wanna print some data to screen for debug
+        CursorX = 1; CursorY = 1;
+        outudec(currPoint.x);
+        outchar('\r');
+        outchar('\n');
+        outudec(currPoint.y);
+        */
+        // declaration for ref: void BSP_LCD_DrawPixel(int16_t x, int16_t y, uint16_t color) {
+        //BSP_LCD_FillRect(int16_t x, int16_t y, int16_t w, int16_t h, uint16_t color)
+        // BSP_LCD_FillScreen(uint16_t color)
+      }
+      // draw point with square of width 5 pixels
+     // BSP_LCD_FillScreen(LCD_BLACK);
+      drawPoint(currPoint);
+      packetstate = INVALID;
+      LEDOUT ^= 0x01;       // toggle P1.0
+    }
+  }
+// end of my new code
+}
+void main2(void){
   uint8_t in;
   uint8_t packet[255];      // the maximum length of each packet is restricted to 255 bytes
   int packetindex = 0;      // pointer to next free position in 'packet'
@@ -215,151 +530,13 @@ void main(void){
     if(packetstate == VALID){
       if((packet[2] == 'G') && (packet[3] == 'G') && packet[4] == 'A'){
         // this packet contains GPS location data
-        i = 0;
-        while(packet[i] != ','){
-          i = i + 1;
-        }
-        i = i + 1;
-        lcdcolor(HEADCOLOR);
-        outchar('\r');
-        outchar('\n');
-        outstring("Time=");
-        lcdcolor(DATACOLOR);
-        outchar(packet[i]);
-        outchar(packet[i+1]);
-        outchar(':');
-        outchar(packet[i+2]);
-        outchar(packet[i+3]);
-        outchar(':');
-        outchar(packet[i+4]);
-        outchar(packet[i+5]);
-        outchar('.'); // this character is actually sent in position 6, skip it
-        outchar(packet[i+7]);
-        outchar(packet[i+8]);
-        outchar(packet[i+9]);
-        while(packet[i] != ','){
-          i = i + 1;
-        }
-        i = i + 1;
-        lcdcolor(HEADCOLOR);
-        outchar('\r');
-        outchar('\n');
-        outstring("Latitude=");
-        CursorX = 1; CursorY = CursorY + 1; // skip to the next line on LCD only for spacing
-        lcdcolor(DATACOLOR);
-        outchar(packet[i]);
-        outchar(packet[i+1]);
-        outchar('d');
-        outchar(packet[i+2]);
-        outchar(packet[i+3]);
-        outchar('\'');
-        seconds = (((packet[i+5] - '0')*1000) +
-                   ((packet[i+6] - '0')*100) +
-                   ((packet[i+7] - '0')*10) +
-                   ((packet[i+8] - '0')))*6;
-        outudec(seconds/1000);
-        outchar('.');
-        outudec((seconds%1000)/100);
-        outudec((seconds%100)/10);
-        outudec((seconds%10));
-        outchar('\"');
-        while(packet[i] != ','){
-          i = i + 1;
-        }
-        i = i + 1;
-        outchar(' ');
-        while(packet[i] != ','){
-          outchar(packet[i]); // units of latitude (N/S)
-          i = i + 1;
-        }
-        i = i + 1;
-        lcdcolor(HEADCOLOR);
-        outchar('\r');
-        outchar('\n');
-        outstring("Longitude=");
-        CursorX = 1; CursorY = CursorY + 1; // skip to the next line on LCD only for spacing
-        lcdcolor(DATACOLOR);
-        outchar(packet[i]);
-        outchar(packet[i+1]);
-        outchar(packet[i+2]); // like latitude but with one more digit
-        outchar('d');
-        outchar(packet[i+3]);
-        outchar(packet[i+4]);
-        outchar('\'');
-        seconds = (((packet[i+6] - '0')*1000) +
-                   ((packet[i+7] - '0')*100) +
-                   ((packet[i+8] - '0')*10) +
-                   ((packet[i+9] - '0')))*6;
-        outudec(seconds/1000);
-        outchar('.');
-        outudec((seconds%1000)/100);
-        outudec((seconds%100)/10);
-        outudec((seconds%10));
-        outchar('\"');
-        while(packet[i] != ','){
-          i = i + 1;
-        }
-        i = i + 1;
-        outchar(' ');
-        while(packet[i] != ','){
-          outchar(packet[i]); // units of longitude (E/W)
-          i = i + 1;
-        }
-        i = i + 1;
-        lcdcolor(HEADCOLOR);
-        outchar('\r');
-        outchar('\n');
-        outstring("Quality=");
-        if(packet[i] == '1'){
-          lcdcolor(LCD_ORANGE);
-          outstring("GPS fix");
-          LaunchPad_Output(RED|GREEN);
-        }else if(packet[i] == '2'){
-          lcdcolor(LCD_GREEN);
-          outstring("DGPS fix");
-          LaunchPad_Output(GREEN);
-        }else{
-          lcdcolor(LCD_RED);
-          outstring("INVALID");
-          LaunchPad_Output(0);
-        }
-        lcdcolor(DATACOLOR);
-        while(packet[i] != ','){
-          i = i + 1;
-        }
-        i = i + 1;
-        lcdcolor(HEADCOLOR);
-        outchar('\r');
-        outchar('\n');
-        outstring("Satellites=");
-        lcdcolor(DATACOLOR);
-        while(packet[i] != ','){
-          outchar(packet[i]);
-          i = i + 1;
-        }
-        i = i + 1;
-        lcdcolor(HEADCOLOR);
-        outchar('\r');
-        outchar('\n');
-        outstring("HDOP=");
-        lcdcolor(DATACOLOR);
-        while(packet[i] != ','){
-          outchar(packet[i]);
-          i = i + 1;
-        }
-        i = i + 1;
-        lcdcolor(HEADCOLOR);
-        outchar('\r');
-        outchar('\n');
-        outstring("Altitude=");
-        lcdcolor(DATACOLOR);
-        while(packet[i] != ','){
-          outchar(packet[i]);
-          i = i + 1;
-        }
-        i = i + 1;
-        outchar(' ');
-        outchar(packet[i]); // units of altitude
+          for (int j = 0; j < packetindex; j++) {
+              if (j % 18 == 0) {
+                  outchar('\r');
+                  outchar('\n');
+              }
+              outchar(packet[j]);
+          }
         outchar('\r');
         outchar('\n');
         lcdwrap();
@@ -369,4 +546,224 @@ void main(void){
     }
   }
 // end of my new code
-}
+}void main3(void){ // original main
+    uint8_t in;
+    uint8_t packet[255];      // the maximum length of each packet is restricted to 255 bytes
+    int packetindex = 0;      // pointer to next free position in 'packet'
+    int i;
+    uint32_t seconds;
+    enum PacketState packetstate = INVALID;
+    Clock_Init48MHz();        // running on crystal
+    BSP_LCD_Init();
+    Time = MainCount = 0;
+  //  SysTick_Init(480000,2);   // set up SysTick for 100 Hz interrupts
+    LaunchPad_Init();         // P1.0 is red LED on LaunchPad
+    UART0_Initprintf();       // serial port to PC for debugging
+    EnableInterrupts();
+    LS20031_Init(UART1_BAUD_57600);
+  /*
+  // original code, this does something
+    printf("\nLS20031 example\n");
+    while(1){
+      in = UART1_InCharNonBlock();
+      if(in){
+        UART0_OutChar(in);
+        MainCount++;
+        LEDOUT ^= 0x01;       // toggle P1.0
+      }
+    }
+  // end of original code
+  */
+  // my new code
+    lcdcolor(LCD_CYAN);
+    outchar('\r');
+    outchar('\n');
+    outchar('\r');
+    outchar('\n');
+    lcdwrap();
+    outstring("LS20031 example");
+    lcdcolor(DATACOLOR);
+    while(1){
+      in = UART1_InCharNonBlock();
+      if(in){
+        // got a character
+        if(in == '$'){
+          // start/restart building a packet
+          packetindex = 0;
+          packetstate = INCOMING;
+        }else if((packetstate == INCOMING) && ((in == '\r') || (in == '\n'))){
+          // packets are terminated by a <CR><LF>
+          // checksum is in 'packetindex - 2' and 'packetindex - 1'
+          packet[packetindex] = 0;
+          packetstate = VALID;
+        }else if((packetstate == INCOMING) && (packetindex < 255)){
+          // add the character to the packet
+          packet[packetindex] = in;
+          packetindex = packetindex + 1;
+          if(packetindex >= 255){
+            packetstate = INVALID;
+          }
+        }
+      }
+      if(packetstate == VALID){
+        if((packet[2] == 'G') && (packet[3] == 'G') && packet[4] == 'A'){
+          // this packet contains GPS location data
+          i = 0;
+          while(packet[i] != ','){
+            i = i + 1;
+          }
+          i = i + 1;
+          lcdcolor(HEADCOLOR);
+          outchar('\r');
+          outchar('\n');
+          outstring("Time=");
+          lcdcolor(DATACOLOR);
+          outchar(packet[i]);
+          outchar(packet[i+1]);
+          outchar(':');
+          outchar(packet[i+2]);
+          outchar(packet[i+3]);
+          outchar(':');
+          outchar(packet[i+4]);
+          outchar(packet[i+5]);
+          outchar('.'); // this character is actually sent in position 6, skip it
+          outchar(packet[i+7]);
+          outchar(packet[i+8]);
+          outchar(packet[i+9]);
+          while(packet[i] != ','){
+            i = i + 1;
+          }
+          outchar(packet[i-1]);
+          outchar(packet[i]);
+          i = i + 1;
+          lcdcolor(HEADCOLOR);
+          outchar('\r');
+          outchar('\n');
+          outchar(packet[i]);
+          outchar(packet[i+1]);
+          outstring("Latitude=");
+          CursorX = 1; CursorY = CursorY + 1; // skip to the next line on LCD only for spacing
+          lcdcolor(DATACOLOR);
+          outchar(packet[i]);
+          outchar(packet[i+1]);
+          outchar('d');
+          outchar(packet[i+2]);
+          outchar(packet[i+3]);
+          outchar('\'');
+          seconds = (((packet[i+5] - '0')*1000) +
+                     ((packet[i+6] - '0')*100) +
+                     ((packet[i+7] - '0')*10) +
+                     ((packet[i+8] - '0')))*6;
+          outudec(seconds/1000);
+          outchar('.');
+          outudec((seconds%1000)/100);
+          outudec((seconds%100)/10);
+          outudec((seconds%10));
+          outchar('\"');
+          while(packet[i] != ','){
+            i = i + 1;
+          }
+          i = i + 1;
+          outchar(' ');
+          while(packet[i] != ','){
+            outchar(packet[i]); // units of latitude (N/S)
+            i = i + 1;
+          }
+          i = i + 1;
+          lcdcolor(HEADCOLOR);
+          outchar('\r');
+          outchar('\n');
+          outstring("Longitude=");
+          CursorX = 1; CursorY = CursorY + 1; // skip to the next line on LCD only for spacing
+          lcdcolor(DATACOLOR);
+          outchar(packet[i]);
+          outchar(packet[i+1]);
+          outchar(packet[i+2]); // like latitude but with one more digit
+          outchar('d');
+          outchar(packet[i+3]);
+          outchar(packet[i+4]);
+          outchar('\'');
+          seconds = (((packet[i+6] - '0')*1000) +
+                     ((packet[i+7] - '0')*100) +
+                     ((packet[i+8] - '0')*10) +
+                     ((packet[i+9] - '0')))*6;
+          outudec(seconds/1000);
+          outchar('.');
+          outudec((seconds%1000)/100);
+          outudec((seconds%100)/10);
+          outudec((seconds%10));
+          outchar('\"');
+          while(packet[i] != ','){
+            i = i + 1;
+          }
+          i = i + 1;
+          outchar(' ');
+          while(packet[i] != ','){
+            outchar(packet[i]); // units of longitude (E/W)
+            i = i + 1;
+          }
+          i = i + 1;
+          lcdcolor(HEADCOLOR);
+          outchar('\r');
+          outchar('\n');
+          outstring("Quality=");
+          if(packet[i] == '1'){
+            lcdcolor(LCD_ORANGE);
+            outstring("GPS fix");
+            LaunchPad_Output(RED|GREEN);
+          }else if(packet[i] == '2'){
+            lcdcolor(LCD_GREEN);
+            outstring("DGPS fix");
+            LaunchPad_Output(GREEN);
+          }else{
+            lcdcolor(LCD_RED);
+            outstring("INVALID");
+            LaunchPad_Output(0);
+          }
+          lcdcolor(DATACOLOR);
+          while(packet[i] != ','){
+            i = i + 1;
+          }
+          i = i + 1;
+          lcdcolor(HEADCOLOR);
+          outchar('\r');
+          outchar('\n');
+          outstring("Satellites=");
+          lcdcolor(DATACOLOR);
+          while(packet[i] != ','){
+            outchar(packet[i]);
+            i = i + 1;
+          }
+          i = i + 1;
+          lcdcolor(HEADCOLOR);
+          outchar('\r');
+          outchar('\n');
+          outstring("HDOP=");
+          lcdcolor(DATACOLOR);
+          while(packet[i] != ','){
+            outchar(packet[i]);
+            i = i + 1;
+          }
+          i = i + 1;
+          lcdcolor(HEADCOLOR);
+          outchar('\r');
+          outchar('\n');
+          outstring("Altitude=");
+          lcdcolor(DATACOLOR);
+          while(packet[i] != ','){
+            outchar(packet[i]);
+            i = i + 1;
+          }
+          i = i + 1;
+          outchar(' ');
+          outchar(packet[i]); // units of altitude
+          outchar('\r');
+          outchar('\n');
+          lcdwrap();
+        }
+        packetstate = INVALID;
+        LEDOUT ^= 0x01;       // toggle P1.0
+      }
+    }
+  // end of my new code
+  }
